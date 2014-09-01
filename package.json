@@ -1,0 +1,9 @@
+{
+  "name": "firefox-session-addon",
+  "title": "firefox-session-addon",
+  "id": "jid1-z6c6AA8V87k27w",
+  "description": "a basic add-on",
+  "author": "",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
