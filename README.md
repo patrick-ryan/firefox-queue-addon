@@ -1,4 +1,4 @@
-Firefox addon: Simple Sessions
-------------------------------
+Firefox addon: Tab Queue
+------------------------
 
 compatible with Firefox 29 onwards
