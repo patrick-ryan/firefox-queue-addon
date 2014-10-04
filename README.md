@@ -1,4 +1,4 @@
 Firefox addon: Tab Queue
 ------------------------
 
-compatible with Firefox 29 onwards
+compatible with Firefox 30 onwards
