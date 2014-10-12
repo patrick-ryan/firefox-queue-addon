@@ -13,7 +13,7 @@ self.port.on("show", function(data) {
     var text = document.createTextNode(title);
     elem.appendChild(text);
     elem.addEventListener("click", function() {
-        self.port.emit("new-tab", url);
+        self.port.emit("entry-clicked", url);
         self.port.emit("hide");
     });
     document.body.appendChild(elem);
@@ -23,3 +23,8 @@ self.port.on("end", function() {
     // self.port.emit("hide");
 });
 
+self.port.on("scratch", function() {
+    while (document.body.firstChild) {
+        document.body.removeChild(document.body.firstChild);
+    }
+});
