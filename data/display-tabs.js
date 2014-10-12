@@ -5,14 +5,16 @@
 self.port.on("show", function(data) {
     var title = data[0];
     var url = data[1];
-    console.log(title);
+    console.log("Showing: ", title);
     var elem = document.createElement("a");
     var href = document.createAttribute("href");
     // href.value = url;
     elem.setAttributeNode(href);
     var text = document.createTextNode(title);
     elem.appendChild(text);
-    elem.addEventListener("click", function() {
+    elem.addEventListener("click", function(event) {
+        event.preventDefault();
+        console.log("Entry clicked: ", url);
         self.port.emit("entry-clicked", url);
         self.port.emit("hide");
     });
