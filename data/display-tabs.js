@@ -2,6 +2,7 @@
  * display-tabs.js
  */
 
+// move html into panel.html, setting the panel item initially disabled, and copying it
 self.port.on("show", function(data) {
     var title = data[0];
     var url = data[1];
@@ -22,4 +23,16 @@ self.port.on("show", function(data) {
         self.port.emit("hide");
     });
     document.body.appendChild(elem);
+});
+
+self.port.on("activate-bookmarking", function() {
+    var bookmark = document.getElementById("bookmark");
+    bookmark.addEventListener("click", function(event) {
+        event.preventDefault();
+        self.port.emit("boomark-clicked");
+    });
+});
+
+self.port.on("done-bookmarking", function(folderName) {
+    console.log(folderName);
 });
