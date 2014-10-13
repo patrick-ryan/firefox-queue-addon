@@ -21,12 +21,12 @@ self.port.on("show", function(data) {
     document.body.appendChild(elem);
 });
 
-self.port.on("end", function() {
-    // self.port.emit("hide");
-});
+// self.port.on("end", function() {
+//     self.port.emit("hide");
+// });
 
-self.port.on("scratch", function() {
-    while (document.body.firstChild) {
-        document.body.removeChild(document.body.firstChild);
-    }
-});
+// self.port.on("scratch", function() {
+//     while (document.body.firstChild) {
+//         document.body.removeChild(document.body.firstChild);
+//     }
+// });
