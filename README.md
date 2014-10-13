@@ -21,7 +21,8 @@ installation
 git clone https://github.com/patrick-ryan/firefox-queue-addon
 cd firefox-queue-addon
 cfx run
+```
 
 
 license
----
+----
