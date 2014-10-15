@@ -33,6 +33,6 @@ self.port.on("activate-bookmarking", function() {
     });
 });
 
-self.port.on("done-bookmarking", function(folderName) {
-    console.log(folderName);
+self.port.on("done-bookmarking", function(folderTitle) {
+    console.log(folderTitle);
 });
