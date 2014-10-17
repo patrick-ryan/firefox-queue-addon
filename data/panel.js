@@ -1,10 +1,7 @@
 /**
- * display-tabs.js
+ * panel.js
  */
 
-// TODO: change name to panel.js
-
-// TODO: move html into panel.html, setting the panel item initially disabled, and copying it
 self.port.on("show", function(data) {
     var title = data[0];
     var url = data[1];
