@@ -22,7 +22,7 @@ self.port.on("show", function(data) {
     link.addEventListener("click", function(event) {
         event.preventDefault();
         // console.log("Entry clicked: ", url);
-        self.port.emit("entry-clicked", url);
+        self.port.emit("item-clicked", url);
         self.port.emit("hide");
     });
     item.appendChild(link);
@@ -36,6 +36,8 @@ self.port.on("show", function(data) {
     deq.appendChild(text);
     deq.addEventListener("click", function(event) {
         event.preventDefault();
+        self.port.emit("dequeue-clicked");
+        document.body.removeChild(item);
     });
     item.appendChild(deq);
     document.body.appendChild(item);
