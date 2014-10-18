@@ -1,3 +1,7 @@
+/**
+ * panel.css
+ */
+
 .heading {
     font-family: "Brush Script MT", cursive;
 }
@@ -18,10 +22,10 @@
 }
 .link,.deq {
     position: absolute;
-    padding: 10px;
 }
 .link {
     background-color: #99CCCC;
+    padding: 10px;
     left: 0;
     width: 90%;
 }
@@ -30,8 +34,9 @@
 }
 .deq {
     background-color: #C8C8C8;
+    padding: 10px 0;
     right: 0;
-    width: 2%;
+    width: 7%;
     text-align: center;
     border-left: 1px solid #888888;
     color: #000000;

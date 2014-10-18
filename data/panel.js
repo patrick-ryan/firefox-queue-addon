@@ -44,7 +44,7 @@ self.port.on("show", function(data) {
 });
 
 self.port.on("activate-bookmarking", function() {
-    console.log("Bookmarking activated");
+    // console.log("Bookmarking activated");
     var bookmark = document.getElementById("bookmark");
     bookmark.addEventListener("click", function(event) {
         event.preventDefault();
