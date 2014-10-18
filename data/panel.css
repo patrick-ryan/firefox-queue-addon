@@ -1,0 +1,41 @@
+.heading {
+    font-family: "Brush Script MT", cursive;
+}
+.options,.link,.deq {
+    text-decoration: none;
+}
+.options {
+    margin: 0;
+    padding: 6px 10px;
+}
+.options:hover {
+    background-color: #00CC99;
+}
+.item {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+.link,.deq {
+    position: absolute;
+    padding: 10px;
+}
+.link {
+    background-color: #99CCCC;
+    left: 0;
+    width: 90%;
+}
+.link:hover {
+    background-color: #00CC99;
+}
+.deq {
+    background-color: #C8C8C8;
+    right: 0;
+    width: 2%;
+    text-align: center;
+    border-left: 1px solid #888888;
+    color: #000000;
+}
+.deq:hover {
+    background-color: #00CC99;
+}
