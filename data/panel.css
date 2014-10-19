@@ -9,6 +9,7 @@
     text-decoration: none;
 }
 .options {
+    background-color: #D8D8D8;
     padding: 6px 10px;
 }
 .options:hover {
@@ -26,7 +27,7 @@
     background-color: #99CCCC;
     padding: 10px;
     left: 0;
-    width: 90%;
+    width: 80%;
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -35,10 +36,10 @@
     background-color: #00CC99;
 }
 .deq {
-    background-color: #C8C8C8;
+    background-color: #FF4D4D;
     padding: 10px 0;
     right: 0;
-    width: 7%;
+    width: 10%;
     text-align: center;
     border-left: 1px solid #888888;
     color: #000000;
