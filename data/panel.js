@@ -2,9 +2,9 @@
  * panel.js
  */
 
-self.port.on("show", function(data) {
-    var title = data[0];
-    var url = data[1];
+self.port.on("show", function(tab) {
+    var title = tab[0];
+    var url = tab[1];
     // console.log("Showing: ", title);
 
     var item = document.createElement("div");

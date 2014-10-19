@@ -9,7 +9,6 @@
     text-decoration: none;
 }
 .options {
-    margin: 0;
     padding: 6px 10px;
 }
 .options:hover {
@@ -28,6 +27,9 @@
     padding: 10px;
     left: 0;
     width: 90%;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 .link:hover {
     background-color: #00CC99;
