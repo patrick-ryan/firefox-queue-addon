@@ -36,7 +36,7 @@ self.port.on("show", function(tab) {
     deq.appendChild(text);
     deq.addEventListener("click", function(event) {
         event.preventDefault();
-        self.port.emit("dequeue-clicked");
+        self.port.emit("dequeue-clicked", url);
         document.body.removeChild(item);
     });
     item.appendChild(deq);
