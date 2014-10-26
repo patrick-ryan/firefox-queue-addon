@@ -1,0 +1,64 @@
+/**
+ * wmPanel.css
+ */
+
+.bookmark,.open,.link,.deq {
+    text-decoration: none;
+}
+.bookmark:hover,.open:hover,.link:hover,.deq:hover {
+    background-color: #00CC99;
+}
+.heading {
+    margin: 0;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row nowrap;
+    justify-content: space-between;
+}
+.subtitle,.bookmark,.open {
+    padding: 6px 10px;
+}
+.bookmark,.open {
+    background-color: #D8D8D8;
+    margin-left: 10px;
+    text-align: center;
+}
+.item {
+    margin: 0;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+.link,.deq {
+    margin: 5px;
+    padding: 10px;
+}
+.link {
+    background-color: #99CCCC;
+    width: 95%;
+
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    flex-grow: 1;
+}
+.deq {
+    background-color: #FF4D4D;
+    border-left: 1px solid #888888;
+    width: 5%;
+    
+    text-align: center;
+    color: #000000;
+}

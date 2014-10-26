@@ -11,6 +11,7 @@ self.port.on("show", function(tab) {
     var cls = document.createAttribute("class");
     cls.value = "item";
     item.setAttributeNode(cls);
+    
     var link = document.createElement("a");
     var cls = document.createAttribute("class");
     cls.value = "link";
@@ -26,6 +27,7 @@ self.port.on("show", function(tab) {
         self.port.emit("hide");
     });
     item.appendChild(link);
+    
     var deq = document.createElement("a");
     var cls = document.createAttribute("class");
     cls.value = "deq";
@@ -40,6 +42,7 @@ self.port.on("show", function(tab) {
         document.body.removeChild(item);
     });
     item.appendChild(deq);
+
     document.body.appendChild(item);
 });
 
