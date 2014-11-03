@@ -14,56 +14,24 @@
     </div>
     <hr>
     <div id="list" class="list">
-        <div class="item">
-            <ul class="win">Click me!
-                <li>Test</li>
-                <li>Test</li>
+        <li class="item">
+            <ul class="win">
+                Click me!
+                <li class="link">Test</li>
+                <li class="link">Test</li>
             </ul>
             <a class="remove" href="">X</a>
-        </div>
-        <div class="item">
-            <ul class="win">Click me!
-                <li>Test</li>
-                <li>Test</li>
+        </li>
+        <!-- <div class="item">
+            <ul class="win">
+                Click me!
+                <li class="link">Test</li>
+                <li class="link">Test</li>
             </ul>
             <a class="remove" href="">X</a>
-        </div>
+        </div> -->
 
         <!-- window manager stuff -->
     </div>
-    <script>
-        function hideChildren(parent) {
-            for each (var node in parent.childNodes) {
-                node.style.display = "none";
-            }
-        }
-        function showChildren(parent) {
-            for each (var node in parent.childNodes) {
-                node.style.display = "";
-            }
-        }
-        function prepareList() {
-            list = document.getElementById("list");
-            for each (var item in list.childNodes) {
-                var win = item.firstChild;
-                win.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    if (win.classList.contains("expanded")) {
-                        hideChildren(win);
-                    }
-                    else {
-                        showChildren(win);
-                    }
-                    win.classList.toggle("expanded");
-                }
-                win.classList.add("collapsed");
-                hideChildren(win);
-            }
-        }
-        // document.addEventListener("load", function(event) {
-        //     prepareList();
-        // });
-        document.getElementById("list").onload = prepareList;
-    </script>
 </body>
 </html>

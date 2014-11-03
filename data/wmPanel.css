@@ -28,12 +28,23 @@
     margin-left: 10px;
     text-align: center;
 }
+
+.list ul,li {
+    list-style: none;
+    cursor: pointer;
+}
+.list li {
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    background-position: 1px 20px;
+}
 .list .collapsed {
     background-image: url(./collapsed.png);
 }
 .list .expanded {
     background-image: url(./expanded.png);
 }
+
 .item {
     margin: 0;
 
@@ -51,8 +62,6 @@
     padding: 10px;
 }
 .win {
-    list-style: none;
-    cursor: pointer;
     background-color: #99CCCC;
     width: 95%;
 
@@ -61,6 +70,13 @@
     text-overflow: ellipsis;
 
     flex-grow: 1;
+}
+.link {
+    margin-top: 5px;
+    padding: 10px;
+}
+.link:hover {
+    background-color: #E0FFFF;
 }
 .remove {
     background-color: #FF4D4D;

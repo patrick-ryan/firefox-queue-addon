@@ -2,6 +2,23 @@
  * panel.js
  */
 
+self.port.on("activate-bookmarking", function() {
+    // console.log("Bookmarking activated");
+    var bookmark = document.getElementById("bookmark");
+    bookmark.addEventListener("click", function(event) {
+        event.preventDefault();
+        self.port.emit("bookmark-clicked");
+    });
+});
+
+self.port.on("activate-opening", function() {
+    var open = document.getElementById("open");
+    open.addEventListener("click", function(event) {
+        event.preventDefault();
+        self.port.emit("open-clicked");
+    });
+});
+
 self.port.on("show", function(tab) {
     var title = tab[0];
     var url = tab[1];
@@ -44,21 +61,4 @@ self.port.on("show", function(tab) {
     item.appendChild(deq);
 
     document.body.appendChild(item);
-});
-
-self.port.on("activate-bookmarking", function() {
-    // console.log("Bookmarking activated");
-    var bookmark = document.getElementById("bookmark");
-    bookmark.addEventListener("click", function(event) {
-        event.preventDefault();
-        self.port.emit("bookmark-clicked");
-    });
-});
-
-self.port.on("activate-opening", function() {
-    var open = document.getElementById("open");
-    open.addEventListener("click", function(event) {
-        event.preventDefault();
-        self.port.emit("open-clicked");
-    });
 });
