@@ -6,13 +6,19 @@ self.port.on("activate", function() {
     function hideChildren(parent) {
         var children = parent.children;
         for (var i=0; i<children.length; i++) {
-            children[i].style.display = "none";
+            var child = children[i];
+            if (child.tagName == "LI") {
+                child.style.display = "none";
+            }
         }
     }
     function showChildren(parent) {
         var children = parent.children;
         for (var i=0; i<children.length; i++) {
-            children[i].style.display = "";
+            var child = children[i];
+            if (child.tagName == "LI") {
+                child.style.display = "";
+            }
         }
     }
     function prepareList() {
@@ -23,16 +29,16 @@ self.port.on("activate", function() {
             item.addEventListener("click", function(event) {
                 event.preventDefault();
                 if (item.classList.contains("expanded")) {
-                    hideChildren(item.children[0]);
+                    hideChildren(item);
                 }
                 else {
-                    showChildren(item.children[0]);
+                    showChildren(item);
                 }
                 item.classList.toggle("expanded");
             });
             item.classList.add("collapsed");
             console.log(item.classList);
-            hideChildren(item.children[0]);
+            hideChildren(item);
         }
     }
     prepareList();

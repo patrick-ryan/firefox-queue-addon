@@ -22,39 +22,31 @@ self.port.on("activate-opening", function() {
 self.port.on("show", function(tab) {
     var title = tab[0];
     var url = tab[1];
-    // console.log("Showing: ", title);
 
     var item = document.createElement("div");
     var cls = document.createAttribute("class");
     cls.value = "item";
     item.setAttributeNode(cls);
     
-    var link = document.createElement("a");
+    var link = document.createElement("div");
     var cls = document.createAttribute("class");
     cls.value = "link";
     link.setAttributeNode(cls);
-    var href = document.createAttribute("href");
-    link.setAttributeNode(href);
     var text = document.createTextNode(title);
     link.appendChild(text);
     link.addEventListener("click", function(event) {
-        event.preventDefault();
-        // console.log("Entry clicked: ", url);
         self.port.emit("item-clicked", url);
         self.port.emit("hide");
     });
     item.appendChild(link);
     
-    var deq = document.createElement("a");
+    var deq = document.createElement("div");
     var cls = document.createAttribute("class");
     cls.value = "deq";
     deq.setAttributeNode(cls);
-    var href = document.createAttribute("href");
-    deq.setAttributeNode(href);
     var text = document.createTextNode("X");
     deq.appendChild(text);
     deq.addEventListener("click", function(event) {
-        event.preventDefault();
         self.port.emit("dequeue-clicked", url);
         document.body.removeChild(item);
     });

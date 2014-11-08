@@ -2,10 +2,10 @@
  * wmPanel.css
  */
 
-.save,.saveExit,.win,.remove {
+/*.save,.saveExit,.win,.remove {
     text-decoration: none;
-}
-.save:hover,.saveExit:hover,.win:hover,.remove:hover {
+}*/
+.save:hover,.saveExit:hover,.label:hover,.remove:hover {
     background-color: #00CC99;
 }
 .heading {
@@ -24,16 +24,16 @@
     padding: 6px 10px;
 }
 .save,.saveExit {
+    cursor: pointer;
     background-color: #D8D8D8;
     margin-left: 10px;
     text-align: center;
 }
 
-.list ul,li {
+.list ul {
     list-style: none;
     cursor: pointer;
-}
-.list li {
+
     padding-left: 20px;
     background-repeat: no-repeat;
     background-position: 1px 20px;
@@ -46,8 +46,11 @@
 }
 
 .item {
-    margin: 0;
+    /*border: 1px solid #000000;*/
 
+    margin: 0;
+}
+.win {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -57,26 +60,19 @@
     -webkit-flex-flow: row nowrap;
     justify-content: flex-start;
 }
-.win,.remove {
-    margin: 5px;
+.label,.remove,.link {
+    margin: 0 5px;
     padding: 10px;
 }
-.win {
+.label {
     background-color: #99CCCC;
     width: 95%;
+
+    flex-grow: 1;
 
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
-
-    flex-grow: 1;
-}
-.link {
-    margin-top: 5px;
-    padding: 10px;
-}
-.link:hover {
-    background-color: #E0FFFF;
 }
 .remove {
     background-color: #FF4D4D;
@@ -85,4 +81,7 @@
     
     text-align: center;
     color: #000000;
+}
+.link:hover {
+    background-color: #E0FFFF;
 }

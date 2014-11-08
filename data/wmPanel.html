@@ -9,19 +9,19 @@
 <body>
     <div class="heading">
         <div class="subtitle">Window Manager</div>
-        <a id="save" class="save" href="">Save</a>
-        <a id="saveExit" class="saveExit" href="">Save + Exit</a>
+        <div id="save" class="save">Save</div>
+        <div id="saveExit" class="saveExit">Save + Exit</div>
     </div>
     <hr>
     <div id="list" class="list">
-        <li class="item">
-            <ul class="win">
-                Click me!
-                <li class="link">Test</li>
-                <li class="link">Test</li>
-            </ul>
-            <a class="remove" href="">X</a>
-        </li>
+        <ul class="item">
+            <div class="win">
+                <div class="label">Click me!</div>
+                <div class="remove">X</div>
+            </div>
+            <li class="link">Test</li>
+            <li class="link">Test</li>
+        </ul>
         <!-- <div class="item">
             <ul class="win">
                 Click me!
@@ -30,8 +30,57 @@
             </ul>
             <a class="remove" href="">X</a>
         </div> -->
+        <!-- <li class="item">
+            <ul class="win">
+                <div>Click me!</div>
+                <li class="link">Test</li>
+                <li class="link">Test</li>
+            </ul>
+            <a class="remove" href="">X</a>
+        </li> -->
 
         <!-- window manager stuff -->
     </div>
+    <script>
+        // function hideChildren(parent) {
+        //     var children = parent.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         var child = children[i];
+        //         if (child.tagName == "LI") {
+        //             child.style.display = "none";
+        //         }
+        //     }
+        // }
+        // function showChildren(parent) {
+        //     var children = parent.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         var child = children[i];
+        //         if (child.tagName == "LI") {
+        //             child.style.display = "";
+        //         }
+        //     }
+        // }
+        // function prepareList() {
+        //     list = document.getElementById("list");
+        //     var children = list.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         var item = children[i];
+        //         item.addEventListener("click", function(event) {
+        //             event.preventDefault();
+        //             if (item.classList.contains("expanded")) {
+        //                 hideChildren(item);
+        //             }
+        //             else {
+        //                 showChildren(item);
+        //             }
+        //             item.classList.toggle("expanded");
+        //         });
+        //         item.classList.add("collapsed");
+        //         console.log(item.classList);
+        //         hideChildren(item);
+        //     }
+        // }
+        // prepareList();
+    </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
  */
 
 .bookmark,.open,.link,.deq {
-    text-decoration: none;
+    cursor: pointer;
 }
 .bookmark:hover,.open:hover,.link:hover,.deq:hover {
     background-color: #00CC99;
