@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="./wmPanel.css">
     <!-- <link rel="stylesheet" href="./font-awesome-4.2.0/css/font-awesome.min.css"> -->
 </head>
-<!-- <body> -->
-<body style="width: 400px;">
+<!-- <body style="width: 400px;"> -->
+<body>
     <div class="heading flexbox-row">
         <div class="subtitle">Window Manager</div>
         <div id="save" class="save">Save</div>
@@ -19,9 +19,10 @@
                 <div class="circle toggleList">+</div>
                 <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
-                <div class="circle remove">&times;</div>
-                <div class="open">Open</div>
+                <li class="circle remove">&times;</li>
+                <li class="open">Open</li>
                 <div class="circle toggleMenu">&lt;</div>
+                <div class="circle toggleMenu">&gt;</div>
             </div>
             <li class="link">
                 <div class="label">Test</div>
@@ -35,9 +36,10 @@
                 <div class="circle toggleList">+</div>
                 <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
-                <div class="circle remove">&times;</div>
-                <div class="open">Open</div>
+                <li class="circle remove">&times;</li>
+                <li class="open">Open</li>
                 <div class="circle toggleMenu">&lt;</div>
+                <div class="circle toggleMenu">&gt;</div>
             </div>
             <li class="link">
                 <div class="label">Test</div>
@@ -50,48 +52,67 @@
         <!-- window manager stuff -->
     </div>
     <script>
-        function hideChildren(parent) {
-            var children = parent.children;
-            for (var i=0; i<children.length; i++) {
-                var child = children[i];
-                if (child.tagName == "LI") {
-                    child.style.display = "none";
-                }
-            }
-        }
-        function showChildren(parent) {
-            var children = parent.children;
-            for (var i=0; i<children.length; i++) {
-                var child = children[i];
-                if (child.tagName == "LI") {
-                    child.style.display = "";
-                }
-            }
-        }
-        function createList(item) {
-            var plus = item.children[0].children[0];
-            var minus = item.children[0].children[1];
-            plus.addEventListener("click", function(event) {
-                showChildren(item);
-                plus.style.display = "none";
-                minus.style.display = "";
-            });
-            minus.addEventListener("click", function(event) {
-                hideChildren(item);
-                minus.style.display = "none";
-                plus.style.display = "";
-            });
-            hideChildren(item);
-            minus.style.display = "none";
-        }
-        function prepareList() {
-            var list = document.getElementById("list");
-            var children = list.children;
-            for (var i=0; i<children.length; i++) {
-                createList(children[i]);
-            }
-        }
-        prepareList();
+        // function hideChildren(parent) {
+        //     var children = parent.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         var child = children[i];
+        //         if (child.tagName == "LI") {
+        //             child.style.display = "none";
+        //         }
+        //     }
+        // }
+        // function showChildren(parent) {
+        //     var children = parent.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         var child = children[i];
+        //         if (child.tagName == "LI") {
+        //             child.style.display = "";
+        //         }
+        //     }
+        // }
+        // function createList(item) {
+        //     var win = item.children[0];
+        //     var plus = win.children[0];
+        //     var minus = win.children[1];
+        //     plus.addEventListener("click", function(event) {
+        //         showChildren(item);
+        //         plus.style.display = "none";
+        //         minus.style.display = "";
+        //     });
+        //     minus.addEventListener("click", function(event) {
+        //         hideChildren(item);
+        //         minus.style.display = "none";
+        //         plus.style.display = "";
+        //     });
+        //     hideChildren(item);
+        //     minus.style.display = "none";
+        // }
+        // function createMenuList(item) {
+        //     var win = item.children[0];
+        //     var lessThan = win.children[5];
+        //     var greaterThan = win.children[6];
+        //     lessThan.addEventListener("click", function(event) {
+        //         showChildren(win);
+        //         lessThan.style.display = "none";
+        //         greaterThan.style.display = "";
+        //     });
+        //     greaterThan.addEventListener("click", function(event) {
+        //         hideChildren(win);
+        //         greaterThan.style.display = "none";
+        //         lessThan.style.display = "";
+        //     });
+        //     hideChildren(win);
+        //     greaterThan.style.display = "none";
+        // }
+        // function prepareList() {
+        //     var list = document.getElementById("list");
+        //     var children = list.children;
+        //     for (var i=0; i<children.length; i++) {
+        //         createList(children[i]);
+        //         createMenuList(children[i]);
+        //     }
+        // }
+        // prepareList();
     </script>
 </body>
 </html>

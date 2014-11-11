@@ -22,23 +22,45 @@ self.port.on("activate", function() {
         }
     }
     function createList(item) {
-        item.children[0].children[0].addEventListener("click", function(event) {
-            if (item.classList.contains("expanded")) {
-                hideChildren(item);
-            }
-            else {
-                showChildren(item);
-            }
-            item.classList.toggle("expanded");
+        var win = item.children[0];
+        var plus = win.children[0];
+        var minus = win.children[1];
+        plus.addEventListener("click", function(event) {
+            showChildren(item);
+            plus.style.display = "none";
+            minus.style.display = "";
         });
-        item.classList.add("collapsed");
+        minus.addEventListener("click", function(event) {
+            hideChildren(item);
+            minus.style.display = "none";
+            plus.style.display = "";
+        });
         hideChildren(item);
+        minus.style.display = "none";
+    }
+    function createMenuList(item) {
+        var win = item.children[0];
+        var lessThan = win.children[5];
+        var greaterThan = win.children[6];
+        lessThan.addEventListener("click", function(event) {
+            showChildren(win);
+            lessThan.style.display = "none";
+            greaterThan.style.display = "";
+        });
+        greaterThan.addEventListener("click", function(event) {
+            hideChildren(win);
+            greaterThan.style.display = "none";
+            lessThan.style.display = "";
+        });
+        hideChildren(win);
+        greaterThan.style.display = "none";
     }
     function prepareList() {
         var list = document.getElementById("list");
         var children = list.children;
         for (var i=0; i<children.length; i++) {
             createList(children[i]);
+            createMenuList(children[i]);
         }
     }
     prepareList();
