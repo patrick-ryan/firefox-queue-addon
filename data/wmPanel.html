@@ -69,15 +69,17 @@
             }
         }
         function createList(item) {
-            item.children[0].children[0].addEventListener("click", function(event) {
+            var plus = item.children[0].children[0];
+            var minus = item.children[0].children[1];
+            plus.addEventListener("click", function(event) {
                 showChildren(item);
-                item.children[0].children[0].style.display = "none";
-                item.children[0].children[1].style.display = "";
+                plus.style.display = "none";
+                minus.style.display = "";
             });
-            item.children[0].children[1].addEventListener("click", function(event) {
+            minus.addEventListener("click", function(event) {
                 hideChildren(item);
-                item.children[0].children[1].style.display = "none";
-                item.children[0].children[0].style.display = "";
+                minus.style.display = "none";
+                plus.style.display = "";
             });
             hideChildren(item);
         }
