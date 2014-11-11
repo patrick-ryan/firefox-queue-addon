@@ -6,7 +6,6 @@ self.port.on("activate-bookmarking", function() {
     // console.log("Bookmarking activated");
     var bookmark = document.getElementById("bookmark");
     bookmark.addEventListener("click", function(event) {
-        event.preventDefault();
         self.port.emit("bookmark-clicked");
     });
 });
@@ -14,7 +13,6 @@ self.port.on("activate-bookmarking", function() {
 self.port.on("activate-opening", function() {
     var open = document.getElementById("open");
     open.addEventListener("click", function(event) {
-        event.preventDefault();
         self.port.emit("open-clicked");
     });
 });

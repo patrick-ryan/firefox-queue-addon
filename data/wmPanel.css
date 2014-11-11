@@ -2,12 +2,6 @@
  * wmPanel.css
  */
 
-/*.save,.saveExit,.win,.remove {
-    text-decoration: none;
-}*/
-.save:hover,.saveExit:hover,.label:hover,.remove:hover {
-    background-color: #00CC99;
-}
 .heading {
     margin: 0;
 
@@ -34,23 +28,24 @@
     list-style: none;
     cursor: pointer;
 
-    padding-left: 20px;
-    background-repeat: no-repeat;
-    background-position: 1px 20px;
+    padding-left: 0px;
+    /*background-repeat: no-repeat;
+    background-position: 5px 15px;*/
 }
-.list .collapsed {
+/*.list .collapsed {
     background-image: url(./collapsed.png);
 }
 .list .expanded {
     background-image: url(./expanded.png);
-}
+}*/
 
 .item {
     /*border: 1px solid #000000;*/
-
-    margin: 0;
+    margin: 5px 0;
 }
 .win {
+    background-color: #E0FFFF;
+
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -60,14 +55,25 @@
     -webkit-flex-flow: row nowrap;
     justify-content: flex-start;
 }
-.label,.remove,.link {
-    margin: 0 5px;
+.label {
+    /*margin: 0 5px;*/
     padding: 10px;
 }
-.label {
-    background-color: #99CCCC;
-    width: 95%;
+.circle {
+    border: 1px solid;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.toggleList {
+    flex-shrink: 0;
 
+    text-align: center;
+    margin-left: 5px;
+}
+.label {
     flex-grow: 1;
 
     white-space: nowrap;
@@ -75,13 +81,37 @@
     text-overflow: ellipsis;
 }
 .remove {
-    background-color: #FF4D4D;
-    border-left: 1px solid #888888;
-    width: 5%;
-    
+    flex-shrink: 0;
+
     text-align: center;
-    color: #000000;
+    margin-right: 5px;
+}
+.open {
+    flex-shrink: 0;
+
+    border: 1px solid;
+    padding: 4px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
+}
+.toggleMenu {
+    flex-shrink: 0;
+
+    text-align: center;
+    margin-right: 5px;
+}
+
+.save:hover,.saveExit:hover,.win:hover,.remove:hover {
+    background-color: #99CCCC;
+}
+.toggleList:hover,.open:hover,.toggleMenu:hover {
+    background-color: #00CC99;
+    border-color: #000000;
 }
 .link:hover {
     background-color: #E0FFFF;
+}
+.remove:hover {
+    background-color: #FF4D4D;
 }

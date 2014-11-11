@@ -21,24 +21,24 @@ self.port.on("activate", function() {
             }
         }
     }
+    function createList(item) {
+        item.children[0].children[0].addEventListener("click", function(event) {
+            if (item.classList.contains("expanded")) {
+                hideChildren(item);
+            }
+            else {
+                showChildren(item);
+            }
+            item.classList.toggle("expanded");
+        });
+        item.classList.add("collapsed");
+        hideChildren(item);
+    }
     function prepareList() {
-        list = document.getElementById("list");
+        var list = document.getElementById("list");
         var children = list.children;
         for (var i=0; i<children.length; i++) {
-            var item = children[i];
-            item.addEventListener("click", function(event) {
-                event.preventDefault();
-                if (item.classList.contains("expanded")) {
-                    hideChildren(item);
-                }
-                else {
-                    showChildren(item);
-                }
-                item.classList.toggle("expanded");
-            });
-            item.classList.add("collapsed");
-            console.log(item.classList);
-            hideChildren(item);
+            createList(children[i]);
         }
     }
     prepareList();

@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="./wmPanel.css">
     <!-- <link rel="stylesheet" href="./font-awesome-4.2.0/css/font-awesome.min.css"> -->
 </head>
-<!-- <body style="width: 400px;"> -->
-<body>
+<!-- <body> -->
+<body style="width: 400px;">
     <div class="heading">
         <div class="subtitle">Window Manager</div>
         <div id="save" class="save">Save</div>
@@ -16,71 +16,82 @@
     <div id="list" class="list">
         <ul class="item">
             <div class="win">
+                <div class="circle toggleList">+</div>
                 <div class="label">Click me!</div>
-                <div class="remove">X</div>
+                <div class="circle remove">&times;</div>
+                <div class="open">Open</div>
+                <div class="circle toggleMenu">&lt;</div>
+            </div>
+            <li class="link">
+                <div class="label">Test</div>
+            </li>
+            <li class="link">
+                <div class="label">Test</div>
+            </li>
+        </ul>
+        <ul class="item">
+            <div class="win">
+                <div class="circle toggleList">+</div>
+                <div class="label">Click me!</div>
+                <div class="circle remove">&times;</div>
+                <div class="open">Open</div>
+                <div class="circle toggleMenu">&lt;</div>
             </div>
             <li class="link">Test</li>
             <li class="link">Test</li>
         </ul>
-        <!-- <div class="item">
-            <ul class="win">
-                Click me!
-                <li class="link">Test</li>
-                <li class="link">Test</li>
-            </ul>
-            <a class="remove" href="">X</a>
-        </div> -->
-        <!-- <li class="item">
-            <ul class="win">
-                <div>Click me!</div>
-                <li class="link">Test</li>
-                <li class="link">Test</li>
-            </ul>
-            <a class="remove" href="">X</a>
-        </li> -->
 
         <!-- window manager stuff -->
     </div>
     <script>
-        // function hideChildren(parent) {
-        //     var children = parent.children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var child = children[i];
-        //         if (child.tagName == "LI") {
-        //             child.style.display = "none";
-        //         }
-        //     }
-        // }
-        // function showChildren(parent) {
-        //     var children = parent.children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var child = children[i];
-        //         if (child.tagName == "LI") {
-        //             child.style.display = "";
-        //         }
-        //     }
-        // }
-        // function prepareList() {
-        //     list = document.getElementById("list");
-        //     var children = list.children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var item = children[i];
-        //         item.addEventListener("click", function(event) {
-        //             event.preventDefault();
-        //             if (item.classList.contains("expanded")) {
-        //                 hideChildren(item);
-        //             }
-        //             else {
-        //                 showChildren(item);
-        //             }
-        //             item.classList.toggle("expanded");
-        //         });
-        //         item.classList.add("collapsed");
-        //         console.log(item.classList);
-        //         hideChildren(item);
-        //     }
-        // }
-        // prepareList();
+        function hideChildren(parent) {
+            var children = parent.children;
+            for (var i=0; i<children.length; i++) {
+                var child = children[i];
+                if (child.tagName == "LI") {
+                    child.style.display = "none";
+                }
+            }
+        }
+        function showChildren(parent) {
+            var children = parent.children;
+            for (var i=0; i<children.length; i++) {
+                var child = children[i];
+                if (child.tagName == "LI") {
+                    child.style.display = "";
+                }
+            }
+        }
+        function createList(item) {
+            console.log(item);
+            var toggleList = item.firstElementChild.firstElementChild;
+            console.log(toggleList.classList);
+            toggleList.addEventListener("click", function(event) {
+                if (toggleList.value == "-") {
+                    console.log("hiding...");
+                    hideChildren(item);
+                    item.firstElementChild.firstElementChild.value = "+";
+                }
+                else {
+                    showChildren(item);
+                    item.firstElementChild.firstElementChild.value = "-";
+                }
+                item.classList.toggle("expanded");
+            });
+            item.classList.add("collapsed");
+            hideChildren(item);
+        }
+        function prepareList() {
+            var list = document.getElementById("list");
+            var children = list.childNodes;
+            for (var i=0; i<children.length; i++) {
+                var child = children[i];
+                if (child.nodeType == 1) {
+                    createList(child);
+                }
+            }
+        }
+        prepareList();
     </script>
 </body>
 </html>
