@@ -17,6 +17,7 @@
         <ul class="item">
             <div class="win">
                 <div class="circle toggleList">+</div>
+                <div class="circle toggleList" style="display: none;">&minus;</div>
                 <div class="label">Click me!</div>
                 <div class="circle remove">&times;</div>
                 <div class="open">Open</div>
@@ -32,13 +33,18 @@
         <ul class="item">
             <div class="win">
                 <div class="circle toggleList">+</div>
+                <div class="circle toggleList" style="display: none;">&minus;</div>
                 <div class="label">Click me!</div>
                 <div class="circle remove">&times;</div>
                 <div class="open">Open</div>
                 <div class="circle toggleMenu">&lt;</div>
             </div>
-            <li class="link">Test</li>
-            <li class="link">Test</li>
+            <li class="link">
+                <div class="label">Test</div>
+            </li>
+            <li class="link">
+                <div class="label">Test</div>
+            </li>
         </ul>
 
         <!-- window manager stuff -->
@@ -63,32 +69,23 @@
             }
         }
         function createList(item) {
-            console.log(item);
-            var toggleList = item.firstElementChild.firstElementChild;
-            console.log(toggleList.classList);
-            toggleList.addEventListener("click", function(event) {
-                if (toggleList.value == "-") {
-                    console.log("hiding...");
-                    hideChildren(item);
-                    item.firstElementChild.firstElementChild.value = "+";
-                }
-                else {
-                    showChildren(item);
-                    item.firstElementChild.firstElementChild.value = "-";
-                }
-                item.classList.toggle("expanded");
+            item.children[0].children[0].addEventListener("click", function(event) {
+                showChildren(item);
+                item.children[0].children[0].style.display = "none";
+                item.children[0].children[1].style.display = "";
             });
-            item.classList.add("collapsed");
+            item.children[0].children[1].addEventListener("click", function(event) {
+                hideChildren(item);
+                item.children[0].children[1].style.display = "none";
+                item.children[0].children[0].style.display = "";
+            });
             hideChildren(item);
         }
         function prepareList() {
             var list = document.getElementById("list");
-            var children = list.childNodes;
+            var children = list.children;
             for (var i=0; i<children.length; i++) {
-                var child = children[i];
-                if (child.nodeType == 1) {
-                    createList(child);
-                }
+                createList(children[i]);
             }
         }
         prepareList();
