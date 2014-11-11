@@ -17,7 +17,7 @@
         <ul class="item">
             <div class="win">
                 <div class="circle toggleList">+</div>
-                <div class="circle toggleList" style="display: none;">&minus;</div>
+                <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
                 <div class="circle remove">&times;</div>
                 <div class="open">Open</div>
@@ -33,7 +33,7 @@
         <ul class="item">
             <div class="win">
                 <div class="circle toggleList">+</div>
-                <div class="circle toggleList" style="display: none;">&minus;</div>
+                <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
                 <div class="circle remove">&times;</div>
                 <div class="open">Open</div>
@@ -82,6 +82,7 @@
                 plus.style.display = "";
             });
             hideChildren(item);
+            minus.style.display = "none";
         }
         function prepareList() {
             var list = document.getElementById("list");
