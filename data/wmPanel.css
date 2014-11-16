@@ -26,7 +26,7 @@
     text-align: center;
 }
 
-.list ul {
+#list ul {
     list-style: none;
     cursor: pointer;
 
@@ -34,11 +34,11 @@
     /*background-repeat: no-repeat;
     background-position: 5px 15px;*/
 }
-/*.list .collapsed {
-    background-image: url(./collapsed.png);
+/*#list .collapsed {
+    background-image: url(./img/collapsed.png);
 }
-.list .expanded {
-    background-image: url(./expanded.png);
+#list .expanded {
+    background-image: url(./img/expanded.png);
 }*/
 
 .item {
@@ -56,9 +56,9 @@
     text-overflow: ellipsis;
 }
 .win {
-    background-color: #E0FFFF;
-
     justify-content: flex-start;
+
+    background-color: #E0FFFF;
 }
 .circle {
     border: 1px solid;

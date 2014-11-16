@@ -59,8 +59,9 @@ self.port.on("activate", function() {
         var list = document.getElementById("list");
         var children = list.children;
         for (var i=0; i<children.length; i++) {
-            createList(children[i]);
-            createMenuList(children[i]);
+            var item = children[i];
+            createList(item);
+            createMenuList(item);
         }
     }
     prepareList();
@@ -70,5 +71,20 @@ self.port.on("show", function(win) {
     var title = win[0];
     var tabs = win[1];
 
-    
+    var list = document.getElementById("list");
+
+    var item = document.createElement("ul");
+    item.className = "item";
+    item.innerHTML = 
+        '<div class="win flexbox-row">
+            <div class="circle toggleList">&plus;</div>
+            <div class="circle toggleList">&minus;</div>
+            <div class="label">' + title + '</div>
+            <li class="circle remove">&times;</li>
+            <li class="open">Open</li>
+            <div class="circle toggleMenu">&lt;</div>
+            <div class="circle toggleMenu">&gt;</div>
+        </div>';
+
+    console.log(tabs);
 });

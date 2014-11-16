@@ -21,34 +21,21 @@ self.port.on("show", function(tab) {
     var title = tab[0];
     var url = tab[1];
 
+    var list = document.getElementById("list");
+
     var item = document.createElement("div");
-    var cls = document.createAttribute("class");
-    cls.value = "item";
-    item.setAttributeNode(cls);
-    
-    var link = document.createElement("div");
-    var cls = document.createAttribute("class");
-    cls.value = "link";
-    link.setAttributeNode(cls);
-    var text = document.createTextNode(title);
-    link.appendChild(text);
-    link.addEventListener("click", function(event) {
+    item.className = "item";
+    item.innerHTML = '<div class="link">' + title + '</div><div class="deq">&times;</div>';
+
+    item.firstChild.addEventListener("click", function(event) {
         self.port.emit("item-clicked", url);
         self.port.emit("hide");
     });
-    item.appendChild(link);
-    
-    var deq = document.createElement("div");
-    var cls = document.createAttribute("class");
-    cls.value = "deq";
-    deq.setAttributeNode(cls);
-    var text = document.createTextNode("X");
-    deq.appendChild(text);
-    deq.addEventListener("click", function(event) {
-        self.port.emit("dequeue-clicked", url);
-        document.body.removeChild(item);
-    });
-    item.appendChild(deq);
 
-    document.body.appendChild(item);
+    item.lastChild.addEventListener("click", function(event) {
+        self.port.emit("dequeue-clicked", url);
+        list.removeChild(item);
+    });
+
+    list.appendChild(item);
 });

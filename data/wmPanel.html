@@ -13,10 +13,10 @@
         <div id="saveExit" class="saveExit">Save + Exit</div>
     </div>
     <hr>
-    <div id="list" class="list">
+    <div id="list">
         <ul class="item">
             <div class="win flexbox-row">
-                <div class="circle toggleList">+</div>
+                <div class="circle toggleList">&plus;</div>
                 <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
                 <li class="circle remove">&times;</li>
@@ -33,7 +33,7 @@
         </ul>
         <ul class="item">
             <div class="win flexbox-row">
-                <div class="circle toggleList">+</div>
+                <div class="circle toggleList">&plus;</div>
                 <div class="circle toggleList">&minus;</div>
                 <div class="label">Click me!</div>
                 <li class="circle remove">&times;</li>
@@ -108,8 +108,9 @@
         //     var list = document.getElementById("list");
         //     var children = list.children;
         //     for (var i=0; i<children.length; i++) {
-        //         createList(children[i]);
-        //         createMenuList(children[i]);
+        //         var item = children[i];
+        //         createList(item);
+        //         createMenuList(item);
         //     }
         // }
         // prepareList();
