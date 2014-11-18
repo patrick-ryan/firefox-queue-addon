@@ -7,8 +7,58 @@ self.port.on("activate", function() {
 
     var save = document.getElementById("save");
     save.addEventListener("click", function(event) {
-        panel.port.emit("save-clicked");
+        var list = document.getElementById("list");
+
+        var item = document.createElement("ul");
+        item.className = "item";
+
+        item.innerHTML = 
+            '<div class="win flexbox-row">' +
+                '<div class="circle toggleList">&plus;</div>' +
+                '<div class="circle toggleList">&minus;</div>' +
+                '<div class="label">' + 
+                    '<form id="form">' +
+                        '<input type="text" id="title">' + 
+                        '<input type="submit" value="Done">' +
+                    '</form>' +
+                '</div>' +
+                '<li class="circle remove">&times;</li>' +
+                '<li class="open">Open</li>' +
+                '<div class="circle toggleMenu">&lt;</div>' +
+                '<div class="circle toggleMenu">&gt;</div>' +
+            '</div>';
+
+        var form = item.getElementById("form");
+        form.addEventListener("submit", function(event) {
+            var title = form.getElementById("title").value;
+            panel.port.emit("save-clicked", title);
+            item.removeChild(form);
+        });
+
+        createMenuList(item);
+        list.insertBefore(item, list.firstChild);
     });
+});
+
+self.port.on("add", function(win) {
+    var title = win[0];
+    var tabs = win[1];
+
+    var item = document.getElementById("list").firstChild;
+    item.children[2].value = title;
+
+    var tabsHTML = "";
+    for (var i=0; i<tabs.length; i++) {
+        var tab = tabs[i];
+        tabsHTML += 
+            '<li class="link">' +
+                '<div class="label">' + tab[0] + '</div>' +
+            '</li>'
+    }
+
+    item.innerHTML += tabsHTML;
+
+    prepareList(item);
 });
 
 self.port.on("show", function(win) {
