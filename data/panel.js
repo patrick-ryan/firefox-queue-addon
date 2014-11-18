@@ -2,15 +2,13 @@
  * panel.js
  */
 
-self.port.on("activate-bookmarking", function() {
+self.port.on("activate", function() {
     // console.log("Bookmarking activated");
     var bookmark = document.getElementById("bookmark");
     bookmark.addEventListener("click", function(event) {
         self.port.emit("bookmark-clicked");
     });
-});
 
-self.port.on("activate-opening", function() {
     var open = document.getElementById("open");
     open.addEventListener("click", function(event) {
         self.port.emit("open-clicked");
@@ -25,11 +23,12 @@ self.port.on("show", function(tab) {
 
     var item = document.createElement("div");
     item.className = "item";
-    item.innerHTML = '<div class="link">' + title + '</div><div class="deq">&times;</div>';
+    item.innerHTML = 
+        '<div class="link">' + title + '</div>' +
+        '<div class="deq">&times;</div>';
 
     item.firstChild.addEventListener("click", function(event) {
         self.port.emit("item-clicked", url);
-        self.port.emit("hide");
     });
 
     item.lastChild.addEventListener("click", function(event) {
