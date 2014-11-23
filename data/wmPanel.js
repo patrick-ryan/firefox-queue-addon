@@ -18,7 +18,7 @@ self.port.on("activate", function() {
                 '<div class="circle toggleList">&minus;</div>' +
                 '<div class="label">' + 
                     '<form id="form">' +
-                        '<input type="text" id="title">' + 
+                        '<input type="text" id="title" style="width: 50%;">' + 
                         '<input type="submit" value="Done">' +
                     '</form>' +
                 '</div>' +
@@ -53,12 +53,16 @@ self.port.on("add", function(win) {
         tabsHTML += 
             '<li class="link">' +
                 '<div class="label">' + tab[0] + '</div>' +
-            '</li>'
+            '</li>';
     }
 
     item.innerHTML += tabsHTML;
-
     prepareList(item);
+
+    item.firstChild.childNodes[3].addEventListener("click", function(event) {
+        self.port.emit("remove-clicked", title);
+        item.parentNode.removeChild(item);
+    });
 });
 
 self.port.on("show", function(win) {
@@ -76,7 +80,7 @@ self.port.on("show", function(win) {
         tabsHTML += 
             '<li class="link">' +
                 '<div class="label">' + tab[0] + '</div>' +
-            '</li>'
+            '</li>';
     }
 
     item.innerHTML = 
@@ -92,6 +96,11 @@ self.port.on("show", function(win) {
 
     prepareList(item);
     list.appendChild(item);
+
+    item.firstChild.childNodes[3].addEventListener("click", function(event) {
+        self.port.emit("remove-clicked", title);
+        list.removeChild(item);
+    });
 });
 
 function hideChildren(parent) {
