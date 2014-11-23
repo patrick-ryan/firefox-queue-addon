@@ -2,12 +2,6 @@
  * panel.css
  */
 
-.bookmark,.open,.link,.deq {
-    cursor: pointer;
-}
-.bookmark:hover,.open:hover,.link:hover,.deq:hover {
-    background-color: #00CC99;
-}
 .heading {
     /*margin: 0;*/
 
@@ -24,6 +18,7 @@
     padding: 6px 10px;
 }
 .bookmark,.open {
+    cursor: pointer;
     background-color: #D8D8D8;
     margin-left: 10px;
     text-align: center;
@@ -41,6 +36,7 @@
     justify-content: flex-start;
 }
 .link,.deq {
+    cursor: pointer;
     margin: 5px;
     padding: 10px;
 }
@@ -61,4 +57,7 @@
     
     text-align: center;
     color: #000000;
+}
+.bookmark:hover,.open:hover,.link:hover,.deq:hover {
+    background-color: #00CC99;
 }
