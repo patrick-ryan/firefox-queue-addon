@@ -16,10 +16,10 @@
 
     justify-content: space-between;
 }
-.subtitle,.save,.saveExit {
+.subtitle,.save,.exportAll {
     padding: 6px 10px;
 }
-.save,.saveExit {
+.save,.exportAll {
     cursor: pointer;
     background-color: #D8D8D8;
     margin-left: 10px;
@@ -96,7 +96,7 @@
     margin-right: 5px;
 }
 
-.save:hover,.saveExit:hover,.win:hover,.remove:hover {
+.save:hover,.exportAll:hover,.win:hover,.remove:hover {
     background-color: #99CCCC;
 }
 .toggleList:hover,.open:hover,.toggleMenu:hover {
