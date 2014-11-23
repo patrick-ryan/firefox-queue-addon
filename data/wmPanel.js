@@ -28,12 +28,13 @@ self.port.on("activate", function() {
                 '<div class="circle toggleMenu">&gt;</div>' +
             '</div>';
 
-        createMenuList(item);
+        prepareList(item);
         list.insertBefore(item, list.firstChild);
 
         var form = document.getElementById("form");
         form.addEventListener("submit", function(event) {
             var title = document.getElementById("title").value;
+            form.parentNode.removeChild(form);
             self.port.emit("save-clicked", title);
         });
     });
@@ -44,9 +45,7 @@ self.port.on("add", function(win) {
     var tabs = win[1];
 
     var item = document.getElementById("list").firstChild;
-    var form = document.getElementById("form");
-    form.parentNode.value = title;
-    form.parentNode.removeChild(form);
+    item.firstChild.childNodes[2].textContent = title;
 
     var tabsHTML = "";
     for (var i=0; i<tabs.length; i++) {
