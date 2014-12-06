@@ -58,7 +58,7 @@
 .win {
     justify-content: flex-start;
 
-    background-color: #E0FFFF;
+    background-color: #AFEEEE;
 }
 .circle {
     border: 1px solid;
@@ -95,6 +95,9 @@
     text-align: center;
     margin-right: 5px;
 }
+.selected {
+    background-color: #99CCCC;
+}
 
 .save:hover,.exportAll:hover,.win:hover,.remove:hover {
     background-color: #99CCCC;
@@ -104,7 +107,7 @@
     border-color: #000000;
 }
 .link:hover {
-    background-color: #E0FFFF;
+    background-color: #AFEEEE;
 }
 .remove:hover {
     background-color: #FF4D4D;

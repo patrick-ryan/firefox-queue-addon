@@ -3,7 +3,7 @@
  */
 
 self.port.on("activate", function() {
-    prepareList();
+    // prepareList();
 
     var save = document.getElementById("save");
     save.addEventListener("click", function(event) {
@@ -63,6 +63,10 @@ self.port.on("add", function(win) {
         self.port.emit("remove-clicked", title);
         item.parentNode.removeChild(item);
     });
+
+    item.firstChild.childNodes[4].addEventListener("click", function(event) {
+        self.port.emit("open-clicked", tabs);
+    });
 });
 
 self.port.on("show", function(win) {
@@ -101,32 +105,63 @@ self.port.on("show", function(win) {
         self.port.emit("remove-clicked", title);
         list.removeChild(item);
     });
+
+    item.firstChild.childNodes[4].addEventListener("click", function(event) {
+        self.port.emit("open-clicked", tabs);
+    });
 });
+
+function selectWindow(win) {
+    if (win.classList.contains("selected")) {
+        win.classList.remove("selected");
+    }
+    else {
+        win.classList.add("selected");
+    }
+}
+
+function selectLink(link) {
+    if (link.classList.contains("selected")) {
+        link.classList.remove("selected");
+    }
+    else {
+        var win = link.parentNode.firstChild;
+        if (win.classList.contains("selected")) {
+            win.classList.remove("selected");
+        }
+        link.classList.add("selected");
+    }
+}
+
+function createSelectListeners(item) {
+    var win = item.firstChild;
+    win.addEventListener("click", selectWindow(win));
+
+    var children = item.children;
+    for (var i=1; i<children.length; i++) {
+        var child = children[i];
+        child.addEventListener("click", selectLink(child));
+    }
+}
 
 function hideChildren(parent) {
     var children = parent.children;
-    for (var i=0; i<children.length; i++) {
-        var child = children[i];
-        if (child.tagName == "LI") {
-            child.style.display = "none";
-        }
+    for (var i=1; i<children.length; i++) {
+        children[i].style.display = "none";
     }
 }
 
 function showChildren(parent) {
     var children = parent.children;
-    for (var i=0; i<children.length; i++) {
-        var child = children[i];
-        if (child.tagName == "LI") {
-            child.style.display = "";
-        }
+    for (var i=1; i<children.length; i++) {
+        children[i].style.display = "";
     }
 }
 
 function createList(item) {
-    var win = item.children[0];
-    var plus = win.children[0];
-    var minus = win.children[1];
+    var win = item.firstChild;
+    var plus = win.firstChild;
+    var minus = plus.nextSibling;
     plus.addEventListener("click", function(event) {
         showChildren(item);
         plus.style.display = "none";
@@ -142,9 +177,9 @@ function createList(item) {
 }
 
 function createMenuList(item) {
-    var win = item.children[0];
-    var lessThan = win.children[5];
-    var greaterThan = win.children[6];
+    var win = item.firstChild;
+    var greaterThan = win.lastChild;
+    var lessThan = greaterThan.previousSibling;
     lessThan.addEventListener("click", function(event) {
         showChildren(win);
         lessThan.style.display = "none";
@@ -163,5 +198,6 @@ function prepareList(item) {
     if (item) {
         createList(item);
         createMenuList(item);
+        createSelectListeners(item);
     }
 }
