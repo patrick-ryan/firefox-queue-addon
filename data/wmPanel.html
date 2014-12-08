@@ -14,7 +14,9 @@
     </div>
     <hr>
     <div id="list">
-        <!-- <ul class="item">
+        <!-- <ul id="test1" class="item"><div class="win flexbox-row"><div class="circle toggleList">&plus;</div><div class="circle toggleList">&minus;</div><div class="label">Click me!</div><li class="circle remove">&times;</li><li class="open">Open</li><div class="circle toggleMenu">&lt;</div><div class="circle toggleMenu">&gt;</div></div><li class="link label">Test</li><li class="link label">Test 2</li></ul>
+        <ul id="test2" class="item"><div class="win flexbox-row"><div class="circle toggleList">&plus;</div><div class="circle toggleList">&minus;</div><div class="label">Click me 2!</div><li class="circle remove">&times;</li><li class="open">Open</li><div class="circle toggleMenu">&lt;</div><div class="circle toggleMenu">&gt;</div></div><li class="link"><div class="label">Test</div></li><li class="link"><div class="label">Test 2</div></li></ul> -->
+        <!-- <ul id="test1" class="item">
             <div class="win flexbox-row">
                 <div class="circle toggleList">&plus;</div>
                 <div class="circle toggleList">&minus;</div>
@@ -31,11 +33,11 @@
                 <div class="label">Test</div>
             </li>
         </ul>
-        <ul class="item">
+        <ul id="test2" class="item">
             <div class="win flexbox-row">
                 <div class="circle toggleList">&plus;</div>
                 <div class="circle toggleList">&minus;</div>
-                <div class="label">Click me!</div>
+                <div class="label">Click me 2!</div>
                 <li class="circle remove">&times;</li>
                 <li class="open">Open</li>
                 <div class="circle toggleMenu">&lt;</div>
@@ -51,69 +53,119 @@
 
         <!-- window manager stuff -->
     </div>
-    <script>
-        // function hideChildren(parent) {
-        //     var children = parent.children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var child = children[i];
-        //         if (child.tagName == "LI") {
-        //             child.style.display = "none";
-        //         }
-        //     }
-        // }
-        // function showChildren(parent) {
-        //     var children = parent.children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var child = children[i];
-        //         if (child.tagName == "LI") {
-        //             child.style.display = "";
-        //         }
-        //     }
-        // }
-        // function createList(item) {
-        //     var win = item.children[0];
-        //     var plus = win.children[0];
-        //     var minus = win.children[1];
-        //     plus.addEventListener("click", function(event) {
-        //         showChildren(item);
-        //         plus.style.display = "none";
-        //         minus.style.display = "";
-        //     });
-        //     minus.addEventListener("click", function(event) {
-        //         hideChildren(item);
-        //         minus.style.display = "none";
-        //         plus.style.display = "";
-        //     });
-        //     hideChildren(item);
-        //     minus.style.display = "none";
-        // }
-        // function createMenuList(item) {
-        //     var win = item.children[0];
-        //     var lessThan = win.children[5];
-        //     var greaterThan = win.children[6];
-        //     lessThan.addEventListener("click", function(event) {
-        //         showChildren(win);
-        //         lessThan.style.display = "none";
-        //         greaterThan.style.display = "";
-        //     });
-        //     greaterThan.addEventListener("click", function(event) {
-        //         hideChildren(win);
-        //         greaterThan.style.display = "none";
-        //         lessThan.style.display = "";
-        //     });
-        //     hideChildren(win);
-        //     greaterThan.style.display = "none";
-        // }
-        // function prepareList() {
-        //     var children = document.getElementById("list").children;
-        //     for (var i=0; i<children.length; i++) {
-        //         var item = children[i];
-        //         createList(item);
-        //         createMenuList(item);
-        //         createSelectListeners(item);
-        //     }
-        // }
-        // prepareList();
-    </script>
+<script>
+// function selectWindow(win) {
+//     var children = win.parentNode.childNodes;
+//     if (win.classList.contains("selected")) {
+//         win.classList.remove("selected");
+
+//         for (var i=1; i<children.length; i++) {
+//             children[i].classList.remove("selected");
+//         }
+//     }
+//     else {
+//         win.classList.add("selected");
+
+//         for (var i=1; i<children.length; i++) {
+//             children[i].classList.add("selected");
+//         }
+//     }
+// }
+
+// function selectLink(link) {
+//     link.addEventListener("click", function(event) {
+//         if (link.classList.contains("selected")) {
+//             link.parentNode.firstChild.classList.remove("selected");
+//             link.classList.remove("selected");
+//         }
+//         else {
+//             link.classList.add("selected");
+//         }
+//     });
+// }
+
+// function createSelectListeners(item) {
+//     var win = item.firstChild;
+//     win.addEventListener("click", function(event) {
+//         selectWindow(win);
+//     });
+
+//     var children = item.childNodes;
+//     for (var i=1; i<children.length; i++) {
+//         selectLink(children[i]);
+//     }
+// }
+
+// function hideChildren(parent) {
+//     var children = parent.childNodes;
+//     for (var i=0; i<children.length; i++) {
+//         var child = children[i];
+//         if (child.tagName == "LI") {
+//             child.style.display = "none";
+//         }
+//     }
+// }
+
+// function showChildren(parent) {
+//     var children = parent.childNodes;
+//     for (var i=0; i<children.length; i++) {
+//         var child = children[i];
+//         if (child.tagName == "LI") {
+//             child.style.display = "";
+//         }
+//     }
+// }
+
+// function createList(item) {
+//     var win = item.firstChild;
+//     var plus = win.firstChild;
+//     var minus = plus.nextSibling;
+//     plus.addEventListener("click", function(event) {
+//         showChildren(item);
+//         plus.style.display = "none";
+//         minus.style.display = "";
+//         event.stopPropagation();
+//     });
+//     minus.addEventListener("click", function(event) {
+//         hideChildren(item);
+//         minus.style.display = "none";
+//         plus.style.display = "";
+//         event.stopPropagation();
+//     });
+//     hideChildren(item);
+//     minus.style.display = "none";
+// }
+
+// function createMenuList(item) {
+//     var win = item.firstChild;
+//     var greaterThan = win.lastChild;
+//     var lessThan = greaterThan.previousSibling;
+//     lessThan.addEventListener("click", function(event) {
+//         showChildren(win);
+//         lessThan.style.display = "none";
+//         greaterThan.style.display = "";
+//         event.stopPropagation();
+//     });
+//     greaterThan.addEventListener("click", function(event) {
+//         hideChildren(win);
+//         greaterThan.style.display = "none";
+//         lessThan.style.display = "";
+//         event.stopPropagation();
+//     });
+//     hideChildren(win);
+//     greaterThan.style.display = "none";
+// }
+
+// function prepareList(item) {
+//     if (item) {
+//         createList(item);
+//         createMenuList(item);
+//         createSelectListeners(item);
+//     }
+// }
+
+// prepareList(document.getElementById("test1"));
+// prepareList(document.getElementById("test2"));
+</script>
 </body>
 </html>

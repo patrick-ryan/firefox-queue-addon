@@ -62,10 +62,12 @@ self.port.on("add", function(win) {
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         self.port.emit("remove-clicked", title);
         item.parentNode.removeChild(item);
+        event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         self.port.emit("open-clicked", tabs);
+        event.stopPropagation();
     });
 });
 
@@ -104,57 +106,74 @@ self.port.on("show", function(win) {
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         self.port.emit("remove-clicked", title);
         list.removeChild(item);
+        event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         self.port.emit("open-clicked", tabs);
+        event.stopPropagation();
     });
 });
 
 function selectWindow(win) {
+    var children = win.parentNode.childNodes;
     if (win.classList.contains("selected")) {
         win.classList.remove("selected");
+
+        for (var i=1; i<children.length; i++) {
+            children[i].classList.remove("selected");
+        }
     }
     else {
         win.classList.add("selected");
+
+        for (var i=1; i<children.length; i++) {
+            children[i].classList.add("selected");
+        }
     }
 }
 
 function selectLink(link) {
-    if (link.classList.contains("selected")) {
-        link.classList.remove("selected");
-    }
-    else {
-        var win = link.parentNode.firstChild;
-        if (win.classList.contains("selected")) {
-            win.classList.remove("selected");
+    link.addEventListener("click", function(event) {
+        if (link.classList.contains("selected")) {
+            link.parentNode.firstChild.classList.remove("selected");
+            link.classList.remove("selected");
         }
-        link.classList.add("selected");
-    }
+        else {
+            link.classList.add("selected");
+        }
+    });
 }
 
 function createSelectListeners(item) {
     var win = item.firstChild;
-    win.addEventListener("click", selectWindow(win));
+    win.addEventListener("click", function(event) {
+        selectWindow(win);
+    });
 
-    var children = item.children;
+    var children = item.childNodes;
     for (var i=1; i<children.length; i++) {
-        var child = children[i];
-        child.addEventListener("click", selectLink(child));
+        selectLink(children[i]);
     }
 }
 
 function hideChildren(parent) {
-    var children = parent.children;
-    for (var i=1; i<children.length; i++) {
-        children[i].style.display = "none";
+    var children = parent.childNodes;
+    for (var i=0; i<children.length; i++) {
+        var child = children[i];
+        if (child.tagName == "LI") {
+            child.style.display = "none";
+        }
     }
 }
 
 function showChildren(parent) {
-    var children = parent.children;
-    for (var i=1; i<children.length; i++) {
-        children[i].style.display = "";
+    var children = parent.childNodes;
+    for (var i=0; i<children.length; i++) {
+        var child = children[i];
+        if (child.tagName == "LI") {
+            child.style.display = "";
+        }
     }
 }
 
@@ -166,11 +185,13 @@ function createList(item) {
         showChildren(item);
         plus.style.display = "none";
         minus.style.display = "";
+        event.stopPropagation();
     });
     minus.addEventListener("click", function(event) {
         hideChildren(item);
         minus.style.display = "none";
         plus.style.display = "";
+        event.stopPropagation();
     });
     hideChildren(item);
     minus.style.display = "none";
@@ -184,11 +205,13 @@ function createMenuList(item) {
         showChildren(win);
         lessThan.style.display = "none";
         greaterThan.style.display = "";
+        event.stopPropagation();
     });
     greaterThan.addEventListener("click", function(event) {
         hideChildren(win);
         greaterThan.style.display = "none";
         lessThan.style.display = "";
+        event.stopPropagation();
     });
     hideChildren(win);
     greaterThan.style.display = "none";

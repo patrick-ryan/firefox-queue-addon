@@ -55,7 +55,7 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
-.win {
+.win,.link {
     justify-content: flex-start;
 
     background-color: #AFEEEE;
@@ -99,15 +99,12 @@
     background-color: #99CCCC;
 }
 
-.save:hover,.exportAll:hover,.win:hover,.remove:hover {
+.save:hover,.exportAll:hover,.win:hover,.remove:hover,.link:hover {
     background-color: #99CCCC;
 }
 .toggleList:hover,.open:hover,.toggleMenu:hover {
     background-color: #00CC99;
     border-color: #000000;
-}
-.link:hover {
-    background-color: #AFEEEE;
 }
 .remove:hover {
     background-color: #FF4D4D;
