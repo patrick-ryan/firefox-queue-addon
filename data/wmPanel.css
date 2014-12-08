@@ -11,7 +11,7 @@
 
     -webkit-flex-flow: row nowrap;
 }
-.heading {
+#heading {
     /*margin: 0;*/
 
     justify-content: space-between;
@@ -97,6 +97,10 @@
 }
 .selected {
     background-color: #99CCCC;
+}
+.warning {
+    color: red;
+    font-style: italic;
 }
 
 .save:hover,.exportAll:hover,.win:hover,.remove:hover,.link:hover {
