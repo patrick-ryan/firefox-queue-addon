@@ -2,7 +2,7 @@
  * panel.css
  */
 
-.heading {
+#heading {
     /*margin: 0;*/
 
     display: -webkit-box;
@@ -14,10 +14,10 @@
     -webkit-flex-flow: row nowrap;
     justify-content: space-between;
 }
-.subtitle,.bookmark,.open {
+#subtitle,.btn {
     padding: 6px 10px;
 }
-.bookmark,.open {
+.btn {
     cursor: pointer;
     background-color: #D8D8D8;
     margin-left: 10px;
@@ -58,6 +58,11 @@
     text-align: center;
     color: #000000;
 }
-.bookmark:hover,.open:hover,.link:hover,.deq:hover {
+.warning {
+    color: red;
+    font-style: italic;
+}
+
+.btn:hover,.link:hover,.deq:hover {
     background-color: #00CC99;
 }
