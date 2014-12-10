@@ -71,7 +71,7 @@ self.port.on("add", function(win) {
         var tab = tabs[i];
         tabsHTML += 
             '<li class="link">' +
-                '<div class="label">' + tab[0] + '</div>' +
+                '<div class="label">' + tab[0] + " (" + tab[1] + ")" + '</div>' +
             '</li>';
     }
 
@@ -106,7 +106,7 @@ self.port.on("show", function(win) {
         var tab = tabs[i];
         tabsHTML += 
             '<li class="link">' +
-                '<div class="label">' + tab[0] + '</div>' +
+                '<div class="label">' + tab[0] + " (" + tab[1] + ")" + '</div>' +
             '</li>';
     }
 
