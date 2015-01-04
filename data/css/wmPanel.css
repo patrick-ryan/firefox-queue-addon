@@ -16,10 +16,10 @@
 
     justify-content: space-between;
 }
-.subtitle,.save,.exportAll {
+.subtitle,.btn {
     padding: 6px 10px;
 }
-.save,.exportAll {
+.btn {
     cursor: pointer;
     background-color: #D8D8D8;
     margin-left: 10px;
@@ -103,7 +103,7 @@
     font-style: italic;
 }
 
-.save:hover,.exportAll:hover,.win:hover,.remove:hover,.link:hover {
+.btn:hover,.win:hover,.remove:hover,.link:hover {
     background-color: #99CCCC;
 }
 .toggleList:hover,.open:hover,.toggleMenu:hover {

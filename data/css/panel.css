@@ -41,7 +41,7 @@
     padding: 10px;
 }
 .link {
-    background-color: #99CCCC;
+    background-color: #AFEEEE;
     width: 95%;
 
     white-space: nowrap;
@@ -52,11 +52,14 @@
 }
 .deq {
     background-color: #FF4D4D;
-    border-left: 1px solid #888888;
+    /*border-left: 1px solid #888888;*/
     width: 5%;
     
     text-align: center;
     color: #000000;
+}
+.selected {
+    background-color: #99CCCC;
 }
 .warning {
     color: red;

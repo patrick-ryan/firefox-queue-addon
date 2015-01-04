@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tab Queue</title>
-    <link rel="stylesheet" href="./panel.css">
-    <!-- <link rel="stylesheet" href="./font-awesome-4.2.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="./css/panel.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <!-- <body style="width: 400px;"> -->
 <body>
     <div id="heading">
         <div id="subtitle">Tab Queue</div>
-        <div id="bookmark" class="btn">Bookmark All</div>
-        <div id="open" class="btn">Open All</div>
-        <div id="save" class="btn">Save As Window</div>
+        <div id='cssmenu'>
+            <ul>
+                <li class='has-sub'><div>Menu</div>
+                  <ul>
+                     <li><div id="bookmark" class="btn">Bookmark</div></li>
+                     <li><div id="open" class="btn">Open</div></li>
+                     <li><div id="save" class="btn">Save As Window</div></li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <hr>
     <div id="list">

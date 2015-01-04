@@ -1,0 +1,53 @@
+/**
+ * styles.css
+ *
+ * Modified menu source code from CSS MenuMaker
+ * (http://cssmenumaker.com/)
+ */
+
+#cssmenu ul,
+#cssmenu li,
+#cssmenu div {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+#cssmenu:after,
+#cssmenu ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#cssmenu div {
+  display: inline-block;
+  min-width: 35px;
+}
+#cssmenu ul {
+  list-style: none;
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu > ul > li div {
+  border-bottom: 1px solid #5d5d5d;
+  border-top: 1px solid #5d5d5d;
+  border-right: 1px solid #5d5d5d;
+  border-left: 1px solid #5d5d5d;
+  line-height: 34px;
+  padding: 0 35px;
+}
+#cssmenu .has-sub:hover ul {
+  display: block;
+}
+#cssmenu .has-sub ul {
+  display: none;
+  position: absolute;
+  top: 36px;
+  min-width: 100%;
+}
+#cssmenu .has-sub ul li div {
+  border-top: 0 none;
+  display: block;
+  line-height: 120%;
+  padding: 9px 5px;
+}

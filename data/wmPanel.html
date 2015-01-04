@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Window Manager</title>
-    <link rel="stylesheet" href="./wmPanel.css">
-    <!-- <link rel="stylesheet" href="./font-awesome-4.2.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="./css/wmPanel.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <!-- <body style="width: 400px;"> -->
 <body>
     <div id="heading" class="flexbox-row">
         <div class="subtitle">Window Manager</div>
-        <div id="save" class="save">Save</div>
-        <div id="exportAll" class="exportAll">Export All</div>
+        <div id='cssmenu'>
+            <ul>
+                <li class='has-sub'><div>Menu</div>
+                  <ul>
+                     <li><div id="open" class="btn">Open</div></li>
+                     <li><div id="save" class="btn">Save</div></li>
+                     <li><div id="export" class="btn">Export</div></li>
+                  </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <hr>
     <div id="list">

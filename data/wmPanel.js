@@ -4,15 +4,26 @@
 
 var WARNING = false;
 
+
 self.port.on("handle-warnings", handleWarnings);
 
 self.port.on("activate", function() {
+    var open = document.getElementById("open");
+    open.addEventListener("click", function(event) {
+        handleWarnings();
+        self.port.emit("open-clicked", [false, getSelectedTabs()]);
+    });
+
+    // TODO: open in new window
+
     var save = document.getElementById("save");
     save.addEventListener("click", function(event) {
         self.port.emit("save-clicked");
         self.port.on("enough-space", function(enoughSpace) {
             if (enoughSpace) {
                 handleWarnings();
+
+                // if (SAVED) {} else {}
 
                 var list = document.getElementById("list");
 
@@ -80,14 +91,14 @@ self.port.on("add", function(win) {
 
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("remove-clicked", title);
+        self.port.emit("remove-win-clicked", title);
         item.parentNode.removeChild(item);
         event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("open-clicked", tabs);
+        self.port.emit("open-win-clicked", tabs);
         event.stopPropagation();
     });
 });
@@ -126,14 +137,14 @@ self.port.on("show", function(win) {
 
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("remove-clicked", title);
+        self.port.emit("remove-win-clicked", title);
         list.removeChild(item);
         event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("open-clicked", tabs);
+        self.port.emit("open-win-clicked", tabs);
         event.stopPropagation();
     });
 });
@@ -253,4 +264,19 @@ function prepareList(item) {
         createMenuList(item);
         createSelectListeners(item);
     }
+}
+
+function getSelectedTabs() {
+    var items = document.getElementById("list").children;
+    var tabs = [];
+    for (var i=0; i<items.length; i++) {
+        var children = items[i].children;
+        for (var j=1; j<children.length; j++) {
+            var link = children[j];
+            if (link.classList.contains("selected")) {
+                tabs.push([link.firstChild.textContent, link.href]);
+            }
+        }
+    }
+    return tabs;
 }
