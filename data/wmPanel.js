@@ -81,8 +81,8 @@ self.port.on("add", function(win) {
     for (var i=0; i<tabs.length; i++) {
         var tab = tabs[i];
         tabsHTML += 
-            '<li class="link">' +
-                '<div class="label">' + tab[0] + " (" + tab[1] + ")" + '</div>' +
+            '<li class="link" href="' + tab[1] + '">' +
+                '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
             '</li>';
     }
 
@@ -116,8 +116,8 @@ self.port.on("show", function(win) {
     for (var i=0; i<tabs.length; i++) {
         var tab = tabs[i];
         tabsHTML += 
-            '<li class="link">' +
-                '<div class="label">' + tab[0] + " (" + tab[1] + ")" + '</div>' +
+            '<li class="link" href="' + tab[1] + '">' +
+                '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
             '</li>';
     }
 
@@ -274,7 +274,7 @@ function getSelectedTabs() {
         for (var j=1; j<children.length; j++) {
             var link = children[j];
             if (link.classList.contains("selected")) {
-                tabs.push([link.firstChild.textContent, link.href]);
+                tabs.push([link.firstChild.textContent, link.getAttribute("href")]);
             }
         }
     }
