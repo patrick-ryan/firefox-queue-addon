@@ -25,9 +25,6 @@
 #cssmenu ul {
   list-style: none;
 }
-#cssmenu > ul > li {
-  float: left;
-}
 #cssmenu > ul > li div {
   border-bottom: 1px solid #5d5d5d;
   border-top: 1px solid #5d5d5d;

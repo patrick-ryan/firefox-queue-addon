@@ -11,18 +11,17 @@
 
     -webkit-flex-flow: row nowrap;
 }
-#heading {
+#heading > div > ul {
     /*margin: 0;*/
 
     justify-content: space-between;
 }
-.subtitle,.btn {
+.subtitle {
     padding: 6px 10px;
 }
 .btn {
     cursor: pointer;
     background-color: #D8D8D8;
-    margin-left: 10px;
     text-align: center;
 }
 
