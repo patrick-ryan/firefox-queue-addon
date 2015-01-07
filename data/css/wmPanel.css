@@ -11,43 +11,34 @@
 
     -webkit-flex-flow: row nowrap;
 }
-#heading > div > ul {
-    /*margin: 0;*/
 
+#heading {
     justify-content: space-between;
 }
-.subtitle {
-    padding: 6px 10px;
+#subtitle {
+    line-height: 34px;
 }
 .btn {
     cursor: pointer;
     background-color: #D8D8D8;
     text-align: center;
-}
 
-#list ul {
-    list-style: none;
-    cursor: pointer;
-
-    padding-left: 0px;
-    /*background-repeat: no-repeat;
-    background-position: 5px 15px;*/
+    border-bottom: 1px solid #5d5d5d;
+    border-top: 1px solid #5d5d5d;
+    border-right: 1px solid #5d5d5d;
+    border-left: 1px solid #5d5d5d;
+    line-height: 34px;
+    padding: 0 35px;
 }
-/*#list .collapsed {
-    background-image: url(./img/collapsed.png);
-}
-#list .expanded {
-    background-image: url(./img/expanded.png);
-}*/
 
 .item {
-    /*border: 1px solid #000000;*/
-    margin: 5px 0;
+    cursor: pointer;
+    list-style: none;
+    padding-left: 0;
 }
 .label {
     flex-grow: 1;
 
-    /*margin: 0 5px;*/
     padding: 10px;
 
     white-space: nowrap;

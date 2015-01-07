@@ -40,16 +40,11 @@ self.port.on("show", function(tab) {
     var list = document.getElementById("list");
 
     var item = document.createElement("div");
-    item.className = "item";
+    item.className = "item flexbox-row";
     item.href = url;
     item.innerHTML = 
         '<div class="link">' + title + '</div>' +
         '<div class="deq">&times;</div>';
-
-    // item.firstChild.addEventListener("click", function(event) {
-    //     handleWarnings();
-    //     self.port.emit("item-clicked", url);
-    // });
 
     item.lastChild.addEventListener("click", function(event) {
         handleWarnings();

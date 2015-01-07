@@ -2,9 +2,7 @@
  * panel.css
  */
 
-#heading {
-    /*margin: 0;*/
-
+.flexbox-row {
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -12,27 +10,28 @@
     display: flex;
 
     -webkit-flex-flow: row nowrap;
+}
+
+#heading {
     justify-content: space-between;
 }
-#subtitle,.btn {
-    padding: 6px 10px;
+#subtitle {
+    line-height: 34px;
 }
 .btn {
     cursor: pointer;
     background-color: #D8D8D8;
-    margin-left: 10px;
     text-align: center;
+
+    border-bottom: 1px solid #5d5d5d;
+    border-top: 1px solid #5d5d5d;
+    border-right: 1px solid #5d5d5d;
+    border-left: 1px solid #5d5d5d;
+    line-height: 34px;
+    padding: 0 35px;
 }
+
 .item {
-    margin: 0;
-
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-
-    -webkit-flex-flow: row nowrap;
     justify-content: flex-start;
 }
 .link,.deq {
@@ -52,7 +51,6 @@
 }
 .deq {
     background-color: #FF4D4D;
-    /*border-left: 1px solid #888888;*/
     width: 5%;
     
     text-align: center;

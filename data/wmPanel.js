@@ -3,11 +3,22 @@
  */
 
 var WARNING = false;
+// var SAVED = false;
 
 
 self.port.on("handle-warnings", handleWarnings);
 
 self.port.on("activate", function() {
+    var autosave = document.getElementById("autosave");
+    autosave.addEventListener("click", function(event) {
+        if (autosave.classList.contains("selected")) {
+            autosave.classList.remove("selected");
+        }
+        else {
+            autosave.classList.add("selected");
+        }
+    });
+
     var open = document.getElementById("open");
     open.addEventListener("click", function(event) {
         handleWarnings();
@@ -67,6 +78,11 @@ self.port.on("activate", function() {
                 }
             }
         });
+    });
+
+    var saveCurrent = document.getElementById("saveCurrent");
+    saveCurrent.addEventListener("click", function(event) {
+        
     });
 });
 
