@@ -34,6 +34,7 @@
 .item {
     cursor: pointer;
     list-style: none;
+    margin: 5px;
     padding-left: 0;
 }
 .label {
@@ -85,6 +86,7 @@
     text-align: center;
     margin-right: 5px;
 }
+
 .selected {
     background-color: #99CCCC;
 }
@@ -93,12 +95,13 @@
     font-style: italic;
 }
 
-.btn:hover,.win:hover,.remove:hover,.link:hover {
-    background-color: #99CCCC;
+.btn:hover,.win:hover,.link:hover {
+    background-color: #00CC99;
 }
 .toggleList:hover,.open:hover,.toggleMenu:hover {
-    background-color: #00CC99;
+    background-color: #4682B4;
     border-color: #000000;
+    color: #FFFFFF;
 }
 .remove:hover {
     background-color: #FF4D4D;

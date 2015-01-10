@@ -12,7 +12,6 @@ self.port.on("save-cancelled", function() {
 });
 
 self.port.on("activate", function() {
-    // console.log("Bookmarking activated");
     var bookmark = document.getElementById("bookmark");
     bookmark.addEventListener("click", function(event) {
         handleWarnings();
@@ -44,7 +43,7 @@ self.port.on("show", function(tab) {
     item.href = url;
     item.innerHTML = 
         '<div class="link">' + title + '</div>' +
-        '<div class="deq">&times;</div>';
+        '<div class="circle remove">&times;</div>';
 
     item.lastChild.addEventListener("click", function(event) {
         handleWarnings();
@@ -116,7 +115,6 @@ function removeForm() {
 function selectLink(link) {
     link.addEventListener("click", function(event) {
         if (link.classList.contains("selected")) {
-            // link.parentNode.firstChild.classList.remove("selected");
             link.classList.remove("selected");
         }
         else {

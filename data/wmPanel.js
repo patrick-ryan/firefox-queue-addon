@@ -9,15 +9,16 @@ var WARNING = false;
 self.port.on("handle-warnings", handleWarnings);
 
 self.port.on("activate", function() {
-    var autosave = document.getElementById("autosave");
-    autosave.addEventListener("click", function(event) {
-        if (autosave.classList.contains("selected")) {
-            autosave.classList.remove("selected");
-        }
-        else {
-            autosave.classList.add("selected");
-        }
-    });
+    // var autosave = document.getElementById("autosave");
+    // autosave.addEventListener("click", function(event) {
+    //     handleWarnings();
+    //     if (autosave.classList.contains("selected")) {
+    //         autosave.classList.remove("selected");
+    //     }
+    //     else {
+    //         autosave.classList.add("selected");
+    //     }
+    // });
 
     var open = document.getElementById("open");
     open.addEventListener("click", function(event) {
@@ -25,7 +26,11 @@ self.port.on("activate", function() {
         self.port.emit("open-clicked", [false, getSelectedTabs()]);
     });
 
-    // TODO: open in new window
+    var openWindow = document.getElementById("openWindow");
+    openWindow.addEventListener("click", function(event) {
+        handleWarnings();
+        self.port.emit("open-clicked", [true, getSelectedTabs()]);
+    });
 
     var save = document.getElementById("save");
     save.addEventListener("click", function(event) {
@@ -80,10 +85,16 @@ self.port.on("activate", function() {
         });
     });
 
-    var saveCurrent = document.getElementById("saveCurrent");
-    saveCurrent.addEventListener("click", function(event) {
-        
-    });
+    // var saveCurrent = document.getElementById("saveCurrent");
+    // saveCurrent.addEventListener("click", function(event) {
+    //     handleWarnings();
+    // });
+
+    // var export = document.getElementById("export");
+    // export.addEventListener("click", function(event) {
+    //     handleWarnings();
+    //     self.port.emit("export-clicked");
+    // });
 });
 
 self.port.on("add", function(win) {
@@ -107,14 +118,14 @@ self.port.on("add", function(win) {
 
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("remove-win-clicked", title);
+        self.port.emit("remove-clicked", title);
         item.parentNode.removeChild(item);
         event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("open-win-clicked", tabs);
+        self.port.emit("open-clicked", [true, tabs]);
         event.stopPropagation();
     });
 });
@@ -153,14 +164,14 @@ self.port.on("show", function(win) {
 
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("remove-win-clicked", title);
+        self.port.emit("remove-clicked", title);
         list.removeChild(item);
         event.stopPropagation();
     });
 
     item.firstChild.childNodes[4].addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("open-win-clicked", tabs);
+        self.port.emit("open-clicked", [true, tabs]);
         event.stopPropagation();
     });
 });
