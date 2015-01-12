@@ -47,7 +47,7 @@ self.port.on("show", function(tab) {
 
     item.lastChild.addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("dequeue-clicked", url);
+        self.port.emit("remove-clicked", url);
         list.removeChild(item);
     });
 
