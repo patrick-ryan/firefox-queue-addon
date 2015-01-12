@@ -1,5 +1,6 @@
-Firefox addon: Tab Queue
+Firefox addon: Tab Store
 ------------------------
+An extension that stores tabs temporarily and within window groups
 
 compatible with Firefox 30 onwards
 
