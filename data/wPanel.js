@@ -8,6 +8,10 @@ var WARNING = false;
 
 self.port.on("handle-warnings", handleWarnings);
 
+self.port.on("save-cancelled", function() {
+    removeForm();
+});
+
 self.port.on("activate", function() {
     // var autosave = document.getElementById("autosave");
     // autosave.addEventListener("click", function(event) {
@@ -34,55 +38,9 @@ self.port.on("activate", function() {
 
     var save = document.getElementById("save");
     save.addEventListener("click", function(event) {
-        self.port.emit("save-clicked");
-        self.port.on("enough-space", function(enoughSpace) {
-            if (enoughSpace) {
-                handleWarnings();
-
-                // if (SAVED) {} else {}
-
-                var list = document.getElementById("list");
-
-                var item = document.createElement("ul");
-                item.className = "item";
-
-                item.innerHTML = 
-                    '<div class="win flexbox-row">' +
-                        '<div class="circle toggleList">&plus;</div>' +
-                        '<div class="circle toggleList">&minus;</div>' +
-                        '<div class="label">' + 
-                            '<form id="form">' +
-                                '<input type="text" id="title" style="width: 50%;">' + 
-                                '<input type="submit" value="Done">' +
-                            '</form>' +
-                        '</div>' +
-                        '<li class="circle remove">&times;</li>' +
-                        '<li class="open">Open</li>' +
-                        '<div class="circle toggleMenu">&lt;</div>' +
-                        '<div class="circle toggleMenu">&gt;</div>' +
-                    '</div>';
-
-                prepareList(item);
-                list.insertBefore(item, list.firstChild);
-
-                var form = document.getElementById("form");
-                form.addEventListener("submit", function(event) {
-                    var title = document.getElementById("title").value;
-                    form.parentNode.removeChild(form);
-                    self.port.emit("title-entered", title);
-                });
-            }
-            else {
-                if (!WARNING) {
-                    var warning = document.createElement("div");
-                    warning.id = "warning";
-                    warning.className = "warning";
-                    warning.textContent = "Not enough space to save window!";
-                    document.body.insertBefore(warning, document.getElementById("heading").nextSibling);
-                    WARNING = true;
-                }
-            }
-        });
+        if (!removeForm()) {
+            self.port.emit("save-clicked");
+        }
     });
 
     // var saveCurrent = document.getElementById("saveCurrent");
@@ -95,6 +53,53 @@ self.port.on("activate", function() {
     //     handleWarnings();
     //     self.port.emit("export-clicked");
     // });
+});
+
+self.port.on("enough-space", function(enoughSpace) {
+    if (enoughSpace) {
+        handleWarnings();
+
+        // if (SAVED) {} else {}
+
+        var list = document.getElementById("list");
+
+        var item = document.createElement("ul");
+        item.className = "item";
+
+        item.innerHTML = 
+            '<div class="win flexbox-row">' +
+                '<div class="circle toggleList">&plus;</div>' +
+                '<div class="circle toggleList">&minus;</div>' +
+                '<div class="label">' + 
+                    '<form id="form">' +
+                        '<input type="text" id="title" style="width: 50%;">' + 
+                        '<input type="submit" value="Done">' +
+                    '</form>' +
+                '</div>' +
+                '<li class="circle remove">&times;</li>' +
+                '<li class="open">Open</li>' +
+                '<div class="circle toggleMenu">&lt;</div>' +
+                '<div class="circle toggleMenu">&gt;</div>' +
+            '</div>';
+
+        prepareList(item);
+        list.insertBefore(item, list.firstChild);
+
+        var form = document.getElementById("form");
+        if (form) {
+            form.addEventListener("submit", handleSubmit);
+        }
+    }
+    else {
+        if (!WARNING) {
+            var warning = document.createElement("div");
+            warning.id = "warning";
+            warning.className = "warning";
+            warning.textContent = "Not enough space to save window!";
+            document.body.insertBefore(warning, document.getElementById("heading").nextSibling);
+            WARNING = true;
+        }
+    }
 });
 
 self.port.on("add", function(win) {
@@ -176,11 +181,31 @@ self.port.on("show", function(win) {
     });
 });
 
+function handleSubmit(event) {
+    var form = document.getElementById("form");
+    if (form) {
+        var title = document.getElementById("title").value;
+        form.parentNode.removeChild(form);
+        self.port.emit("title-entered", title);
+    }
+}
+
 function handleWarnings() {
     if (WARNING) {
         document.body.removeChild(document.getElementById("warning"));
         WARNING = false;
     }
+}
+
+function removeForm() {
+    var form = document.getElementById("form");
+    if (form) {
+        form.removeEventListener("submit", handleSubmit);
+        var item = form.parentNode.parentNode.parentNode;
+        item.parentNode.removeChild(item);
+        return true;
+    }
+    return false;
 }
 
 function selectWindow(win) {

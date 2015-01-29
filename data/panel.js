@@ -32,29 +32,6 @@ self.port.on("activate", function() {
     });
 });
 
-self.port.on("show", function(tab) {
-    var title = tab[0];
-    var url = tab[1];
-
-    var list = document.getElementById("list");
-
-    var item = document.createElement("div");
-    item.className = "item flexbox-row";
-    item.href = url;
-    item.innerHTML = 
-        '<div class="link">' + title + '</div>' +
-        '<div class="circle remove">&times;</div>';
-
-    item.lastChild.addEventListener("click", function(event) {
-        handleWarnings();
-        self.port.emit("remove-clicked", url);
-        list.removeChild(item);
-    });
-
-    prepareList(item);
-    list.appendChild(item);
-});
-
 self.port.on("enough-space", function(enoughSpace) {
     if (enoughSpace) {
         handleWarnings();
@@ -84,6 +61,29 @@ self.port.on("enough-space", function(enoughSpace) {
             WARNING = true;
         }
     }
+});
+
+self.port.on("show", function(tab) {
+    var title = tab[0];
+    var url = tab[1];
+
+    var list = document.getElementById("list");
+
+    var item = document.createElement("div");
+    item.className = "item flexbox-row";
+    item.href = url;
+    item.innerHTML = 
+        '<div class="link">' + title + '</div>' +
+        '<div class="circle remove">&times;</div>';
+
+    item.lastChild.addEventListener("click", function(event) {
+        handleWarnings();
+        self.port.emit("remove-clicked", url);
+        list.removeChild(item);
+    });
+
+    prepareList(item);
+    list.appendChild(item);
 });
 
 function handleSubmit(event) {
