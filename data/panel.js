@@ -37,12 +37,21 @@ self.port.on("enough-space", function(enoughSpace) {
         handleWarnings();
 
         var div = document.createElement("div");
-        div.innerHTML = 
-            '<form id="form">' +
-                '<label>Enter window title: </label>' +
-                '<input type="text" id="title" style="width: 40%;">' + 
-                '<input type="submit" value="Done">' +
-            '</form>';
+        var form = document.createElement("form");
+        form.id = "form";
+        var label = document.createElement("label");
+        label.textContent = "Enter window title: ";
+        form.appendChild(label);
+        var text = document.createElement("input");
+        text.type = "text";
+        text.id = "title";
+        text.style = "width: 40%;";
+        form.appendChild(text);
+        var submit = document.createElement("input");
+        submit.type = "submit";
+        submit.value = "Done";
+        form.appendChild(submit);
+        div.appendChild(form);
 
         document.body.insertBefore(div, document.getElementById("heading").nextSibling);
 
@@ -72,9 +81,14 @@ self.port.on("show", function(tab) {
     var item = document.createElement("div");
     item.className = "item flexbox-row";
     item.href = url;
-    item.innerHTML = 
-        '<div class="link">' + title + '</div>' +
-        '<div class="circle remove">&times;</div>';
+    var link = document.createElement("div");
+    link.className = "link";
+    link.textContent = title;
+    item.appendChild(link);
+    var remove = document.createElement("div");
+    remove.className = "circle remove";
+    remove.textContent = "x";
+    item.appendChild(remove);
 
     item.lastChild.addEventListener("click", function(event) {
         handleWarnings();
@@ -130,6 +144,7 @@ function prepareList(item) {
 }
 
 function getSelectedTabs() {
+    // excludes text and comment nodes
     var items = document.getElementById("list").children;
     var tabs = [];
     for (var i=0; i<items.length; i++) {
