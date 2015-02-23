@@ -66,21 +66,58 @@ self.port.on("enough-space", function(enoughSpace) {
         var item = document.createElement("ul");
         item.className = "item";
 
-        item.innerHTML = 
-            '<div class="win flexbox-row">' +
-                '<div class="circle toggleList">&plus;</div>' +
-                '<div class="circle toggleList">&minus;</div>' +
-                '<div class="label">' + 
-                    '<form id="form">' +
-                        '<input type="text" id="title" style="width: 50%;">' + 
-                        '<input type="submit" value="Done">' +
-                    '</form>' +
-                '</div>' +
-                '<li class="circle remove">&times;</li>' +
-                '<li class="open">Open</li>' +
-                '<div class="circle toggleMenu">&lt;</div>' +
-                '<div class="circle toggleMenu">&gt;</div>' +
-            '</div>';
+        var win = document.createElement("div");
+        win.className = "win flexbox-row";
+        var opt = document.createElement("div");
+        opt.className = "circle toggleList";
+        opt.textContent = "&plus;";
+        win.appendChild(opt);
+        opt.textContent = "&minus;";
+        win.appendChild(opt);
+        opt.className = "label";
+        var form = document.createElement("form");
+        form.id = "form";
+        var input = document.createElement("input");
+        input.type = "text";
+        input.id = "title";
+        input.style = "width: 50%;";
+        form.appendChild(input);
+        input.type = "submit";
+        input.value = "Done";
+        input.removeAttribute("id");
+        input.removeAttribute("style");
+        form.appendChild(input);
+        opt.appendChild(form);
+        win.appendChild(opt);
+        var child = document.createElement("li");
+        child.className = "circle remove";
+        child.textContent = "&times;";
+        win.appendChild(child);
+        child.className = "open";
+        child.textContent = "Open";
+        win.appendChild(child);
+        opt.className = "circle toggleMenu";
+        opt.textContent = "&lt;";
+        win.appendChild(opt);
+        opt.textContent = "&gt;";
+        win.appendChild(opt);
+        item.appendChild(win);
+
+        // item.innerHTML = 
+        //     '<div class="win flexbox-row">' +
+        //         '<div class="circle toggleList">&plus;</div>' +
+        //         '<div class="circle toggleList">&minus;</div>' +
+        //         '<div class="label">' + 
+        //             '<form id="form">' +
+        //                 '<input type="text" id="title" style="width: 50%;">' + 
+        //                 '<input type="submit" value="Done">' +
+        //             '</form>' +
+        //         '</div>' +
+        //         '<li class="circle remove">&times;</li>' +
+        //         '<li class="open">Open</li>' +
+        //         '<div class="circle toggleMenu">&lt;</div>' +
+        //         '<div class="circle toggleMenu">&gt;</div>' +
+        //     '</div>';
 
         prepareList(item);
         list.insertBefore(item, list.firstChild);
@@ -109,16 +146,28 @@ self.port.on("add", function(win) {
     var item = document.getElementById("list").firstChild;
     item.firstChild.childNodes[2].textContent = title;
 
-    var tabsHTML = "";
+    var child = document.createElement("li");
+    child.className = "link";
+    var opt = document.createElement("div");
+    opt.className = "label";
     for (var i=0; i<tabs.length; i++) {
         var tab = tabs[i];
-        tabsHTML += 
-            '<li class="link" href="' + tab[1] + '">' +
-                '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
-            '</li>';
+        child.href = tab[1];
+        opt.textContent = tab[0] + " (" + tab[1] + ")";
+        child.appendChild(opt);
+        item.appendChild(child);
     }
 
-    item.innerHTML += tabsHTML;
+    // var tabsHTML = "";
+    // for (var i=0; i<tabs.length; i++) {
+    //     var tab = tabs[i];
+    //     tabsHTML += 
+    //         '<li class="link" href="' + tab[1] + '">' +
+    //             '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
+    //         '</li>';
+    // }
+
+    // item.innerHTML += tabsHTML;
     prepareList(item);
 
     item.firstChild.childNodes[3].addEventListener("click", function(event) {
@@ -144,25 +193,60 @@ self.port.on("show", function(win) {
     var item = document.createElement("ul");
     item.className = "item";
 
-    var tabsHTML = "";
+    var win = document.createElement("div");
+    win.className = "win flexbox-row";
+    var opt = document.createElement("div");
+    opt.className = "circle toggleList";
+    opt.textContent = "&plus;";
+    win.appendChild(opt);
+    opt.textContent = "&minus;";
+    win.appendChild(opt);
+    opt.className = "label";
+    opt.textContent = title;
+    win.appendChild(opt);
+    var child = document.createElement("li");
+    child.className = "circle remove";
+    child.textContent = "&times;";
+    win.appendChild(child);
+    child.className = "open";
+    child.textContent = "Open";
+    win.appendChild(child);
+    opt.className = "circle toggleMenu";
+    opt.textContent = "&lt;";
+    win.appendChild(opt);
+    opt.textContent = "&gt;";
+    win.appendChild(opt);
+    item.appendChild(win);
+
+    child.className = "link";
+    opt.className = "label";
     for (var i=0; i<tabs.length; i++) {
         var tab = tabs[i];
-        tabsHTML += 
-            '<li class="link" href="' + tab[1] + '">' +
-                '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
-            '</li>';
+        child.href = tab[1];
+        opt.textContent = tab[0] + " (" + tab[1] + ")";
+        child.appendChild(opt);
+        item.appendChild(child);
     }
 
-    item.innerHTML = 
-        '<div class="win flexbox-row">' +
-            '<div class="circle toggleList">&plus;</div>' +
-            '<div class="circle toggleList">&minus;</div>' +
-            '<div class="label">' + title + '</div>' +
-            '<li class="circle remove">&times;</li>' +
-            '<li class="open">Open</li>' +
-            '<div class="circle toggleMenu">&lt;</div>' +
-            '<div class="circle toggleMenu">&gt;</div>' +
-        '</div>' + tabsHTML;
+    // var tabsHTML = "";
+    // for (var i=0; i<tabs.length; i++) {
+    //     var tab = tabs[i];
+    //     tabsHTML += 
+    //         '<li class="link" href="' + tab[1] + '">' +
+    //             '<div class="label">' + tab[0] + ' (' + tab[1] + ')' + '</div>' +
+    //         '</li>';
+    // }
+
+    // item.innerHTML = 
+    //     '<div class="win flexbox-row">' +
+    //         '<div class="circle toggleList">&plus;</div>' +
+    //         '<div class="circle toggleList">&minus;</div>' +
+    //         '<div class="label">' + title + '</div>' +
+    //         '<li class="circle remove">&times;</li>' +
+    //         '<li class="open">Open</li>' +
+    //         '<div class="circle toggleMenu">&lt;</div>' +
+    //         '<div class="circle toggleMenu">&gt;</div>' +
+    //     '</div>' + tabsHTML;
 
     prepareList(item);
     list.appendChild(item);
