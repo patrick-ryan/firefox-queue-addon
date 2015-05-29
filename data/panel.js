@@ -3,6 +3,7 @@
  */
 
 var WARNING = false;
+var ENV = "tab"; // "window";
 
 
 self.port.on("handle-warnings", handleWarnings);
@@ -12,6 +13,17 @@ self.port.on("save-cancelled", function() {
 });
 
 self.port.on("activate", function() {
+    // var autosave = document.getElementById("autosave");
+    // autosave.addEventListener("click", function(event) {
+    //     handleWarnings();
+    //     if (autosave.classList.contains("selected")) {
+    //         autosave.classList.remove("selected");
+    //     }
+    //     else {
+    //         autosave.classList.add("selected");
+    //     }
+    // });
+
     var bookmark = document.getElementById("bookmark");
     bookmark.addEventListener("click", function(event) {
         handleWarnings();
@@ -21,7 +33,13 @@ self.port.on("activate", function() {
     var open = document.getElementById("open");
     open.addEventListener("click", function(event) {
         handleWarnings();
-        self.port.emit("open-clicked", getSelectedTabs());
+        self.port.emit("open-clicked", [false, getSelectedTabs()]);
+    });
+
+    var openWindow = document.getElementById("openWindow");
+    openWindow.addEventListener("click", function(event) {
+        handleWarnings();
+        self.port.emit("open-clicked", [true, getSelectedTabs()]);
     });
 
     var save = document.getElementById("save");
@@ -30,6 +48,17 @@ self.port.on("activate", function() {
             self.port.emit("save-clicked");
         }
     });
+
+    // var saveCurrent = document.getElementById("saveCurrent");
+    // saveCurrent.addEventListener("click", function(event) {
+    //     handleWarnings();
+    // });
+
+    // var export = document.getElementById("export");
+    // export.addEventListener("click", function(event) {
+    //     handleWarnings();
+    //     self.port.emit("export-clicked");
+    // });
 });
 
 self.port.on("enough-space", function(enoughSpace) {

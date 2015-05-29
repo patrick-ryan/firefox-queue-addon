@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tab Queue</title>
+    <title>Tab Store</title>
     <link rel="stylesheet" href="./css/panel.css">
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <!-- <body style="width: 400px;"> -->
 <body>
-    <div id="heading" class="flexbox-row">
-        <div id="subtitle">Tab Queue</div>
+    <div id="heading">
+        <!-- <div id="subtitle">Tabs</div> -->
+        <!-- <div id="autosave" class="btn">Autosave</div> -->
         <div id='cssmenu'>
-            <ul>
-                <li class='has-sub'><div>Menu</div>
+            <ul class="flexbox-row">
+                <li class="flexbox-row">
+                  <div class="env-selected">Tabs</div>
+                  <div class="env-not-selected">Windows</div>
+                </li>
+                <li class='has-sub'>
+                  <div>Menu</div>
                   <ul>
-                     <li><div id="bookmark" class="btn">Bookmark</div></li>
-                     <li><div id="open" class="btn">Open</div></li>
-                     <li><div id="save" class="btn">Save As Window</div></li>
+                     <li><div id="bookmark">Bookmark</div></li>
+                     <li><div id="open">Open</div></li>
+                     <li><div id="save">Save As Window</div></li>
+                  </ul>
+                  <ul>
+                     <li><div id="open2">Open</div></li>
+                     <li><div id="openWindow">Open in New Window</div></li>
+                     <li><div id="save">Save as New Window</div></li>
+                     <!-- <li><div id="saveCurrent">Save Current Window</div></li> -->
+                     <!-- <li><div id="export">Export</div></li> -->
                   </ul>
                 </li>
             </ul>
@@ -26,5 +40,9 @@
     <div id="list">
         <!-- tab queue stuff -->
     </div>
+    <!-- <div id="list2">
+        <div id="item" class="item" style="display: none;"><div class="win flexbox-row"><div class="circle toggleList">&plus;</div><div class="circle toggleList">&minus;</div><div class="label"></div><li class="circle remove">&times;</li><li class="open">Open</li><div class="circle toggleMenu">&lt;</div><div class="circle toggleMenu">&gt;</div></div></div>
+        window queue stuff
+    </div> -->
 </body>
 </html>

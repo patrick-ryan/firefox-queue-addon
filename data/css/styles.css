@@ -1,7 +1,7 @@
 /**
  * styles.css
  *
- * Modified menu source code from CSS MenuMaker
+ * Adapted from CSS MenuMaker
  * (http://cssmenumaker.com/)
  */
 
@@ -18,14 +18,13 @@
   display: block;
   clear: both;
 }
-#cssmenu div {
-  display: inline-block;
-  min-width: 35px;
-}
 #cssmenu ul {
   list-style: none;
 }
-#cssmenu > ul > li > div {
+#cssmenu ul li div {
+  cursor: pointer;
+  min-width: 100px;
+  text-align: center;
   border-bottom: 1px solid #5d5d5d;
   border-top: 1px solid #5d5d5d;
   border-right: 1px solid #5d5d5d;
@@ -33,18 +32,60 @@
   line-height: 34px;
   padding: 0 35px;
 }
+
+.flexbox-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row nowrap;
+}
+#cssmenu > .flexbox-row {
+  justify-content: space-between;
+}
+#cssmenu > ul .flexbox-row {
+  justify-content: flex-start;
+}
+#cssmenu > ul .flexbox-row div:first-of-type {
+  border-right: none;
+}
+#cssmenu > ul .flexbox-row .env-not-selected:hover {
+  opacity: 1;
+  background-color: #FFFFFF;
+}
+#cssmenu > ul .flexbox-row .env-not-selected {
+  border-bottom: 2px solid blue;
+  opacity: 0.5;
+  background-color: #D3D3D3;
+}
+#cssmenu > ul .flexbox-row .env-selected {
+  border-top: 2px solid blue;
+}
+
+#cssmenu .has-sub:hover > div {
+  border-top: 2px solid green;
+  border-bottom: 1px solid #5d5d5d;
+}
+#cssmenu .has-sub > div {
+  border-bottom: 2px solid green;
+}
 #cssmenu .has-sub:hover ul {
   display: block;
 }
 #cssmenu .has-sub ul {
   display: none;
   position: absolute;
-  top: 36px;
+  top: 37px;
   min-width: 100%;
 }
+#cssmenu .has-sub ul li div:hover {
+  background-color: #00CC99;
+}
 #cssmenu .has-sub ul li div {
-  border-top: 0 none;
-  display: block;
+  background-color: #D8D8D8;
+  border-top: none;
   line-height: 120%;
   padding: 9px 5px;
 }
