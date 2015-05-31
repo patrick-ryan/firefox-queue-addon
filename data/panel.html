@@ -15,21 +15,21 @@
         <div id='cssmenu'>
             <ul class="flexbox-row">
                 <li class="flexbox-row">
-                  <div class="env-selected">Tabs</div>
-                  <div class="env-not-selected">Windows</div>
+                  <div id="tab" class="env-selected">Tabs</div>
+                  <div id="win" class="env-not-selected">Windows</div>
                 </li>
                 <li class='has-sub'>
                   <div>Menu</div>
-                  <ul>
+                  <ul id="tabmenu">
                      <li><div id="bookmark">Bookmark</div></li>
-                     <li><div id="open">Open</div></li>
-                     <li><div id="save">Save As Window</div></li>
+                     <li><div id="opentab">Open</div></li>
+                     <li><div id="savetab">Save As Window</div></li>
                   </ul>
-                  <ul>
-                     <li><div id="open2">Open</div></li>
-                     <li><div id="openWindow">Open in New Window</div></li>
-                     <li><div id="save">Save as New Window</div></li>
-                     <!-- <li><div id="saveCurrent">Save Current Window</div></li> -->
+                  <ul id="winmenu" style="display: none;">
+                     <li><div id="openwin">Open</div></li>
+                     <li><div id="opennewwin">Open in Window</div></li>
+                     <li><div id="savewin">Save as Window</div></li>
+                     <!-- <li><div id="savecurrentwin">Save Current Window</div></li> -->
                      <!-- <li><div id="export">Export</div></li> -->
                   </ul>
                 </li>
@@ -37,12 +37,13 @@
         </div>
     </div>
     <hr>
-    <div id="list">
+    <div id="tablist">
+        <div id="tab-item" class="tab-item flexbox-row" style="display: none;"><div class="link"></div><div class="circle remove">x</div></div>
         <!-- tab queue stuff -->
     </div>
-    <!-- <div id="list2">
-        <div id="item" class="item" style="display: none;"><div class="win flexbox-row"><div class="circle toggleList">&plus;</div><div class="circle toggleList">&minus;</div><div class="label"></div><li class="circle remove">&times;</li><li class="open">Open</li><div class="circle toggleMenu">&lt;</div><div class="circle toggleMenu">&gt;</div></div></div>
-        window queue stuff
-    </div> -->
+    <div id="winlist" style="display: none;">
+        <div id="win-item" class="win-item" style="display: none;"><div class="win flexbox-row"><div class="circle toggle-list">&plus;</div><div class="circle toggle-list">&minus;</div><div class="label"></div><li class="circle remove">&times;</li><li class="openwin">Open</li><div class="circle toggle-menu">&lt;</div><div class="circle toggle-menu">&gt;</div></div></div>
+        <!-- window queue stuff -->
+    </div>
 </body>
 </html>

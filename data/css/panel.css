@@ -2,12 +2,12 @@
  * panel.css
  */
 
-.item {
+.tab-item {
     cursor: pointer;
     background-color: #AFEEEE;
     margin: 5px;
 }
-.item2 {
+.win-item {
     cursor: pointer;
     list-style: none;
     margin: 5px;
@@ -42,17 +42,17 @@
     margin-top: auto;
     margin-bottom: auto;
 }
-.remove {
+.remove-tab {
     text-align: center;
     margin-right: 5px;
 }
-.toggleList {
+.toggle-list {
     flex-shrink: 0;
 
     text-align: center;
     margin-left: 5px;
 }
-.remove2 {
+.remove-win {
     flex-shrink: 0;
 
     text-align: center;
@@ -67,7 +67,7 @@
     margin-bottom: auto;
     margin-right: 5px;
 }
-.toggleMenu {
+.toggle-menu {
     flex-shrink: 0;
 
     text-align: center;
@@ -81,14 +81,14 @@
     font-style: italic;
 }
 
-.item:hover,.win:hover,.link:hover {
+.tab-item:hover,.win-item:hover,.win:hover,.link:hover {
     background-color: #00CC99;
 }
-.toggleList:hover,.open:hover,.toggleMenu:hover {
+.toggle-list:hover,.open:hover,.toggle-menu:hover {
     background-color: #4682B4;
     border-color: #000000;
     color: #FFFFFF;
 }
-.remove:hover {
+.remove-tab:hover,.remove-win:hover {
     background-color: #FF4D4D;
 }

@@ -12,12 +12,12 @@
   padding: 0;
   position: relative;
 }
-#cssmenu:after,
+/*#cssmenu:after,
 #cssmenu ul:after {
   content: '';
   display: block;
   clear: both;
-}
+}*/
 #cssmenu ul {
   list-style: none;
 }
