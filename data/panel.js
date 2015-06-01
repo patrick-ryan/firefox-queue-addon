@@ -5,6 +5,7 @@
 var WARNING = false;
 var ENV = "tab"; // "window";
 var handleSubmit; // ugh.
+// var SAVED = false;
 
 
 self.port.on("handle-warnings", handleWarnings);
@@ -72,7 +73,7 @@ self.port.on("activate", function() {
         self.port.emit("open-clicked", [true, getSelectedTabs()]);
     });
 
-    var saveWin = document.getElementById("save");
+    var saveWin = document.getElementById("savewin");
     saveWin.addEventListener("click", function(event) {
         if (!removeForm()) {
             self.port.emit("save-clicked");
@@ -93,15 +94,17 @@ self.port.on("activate", function() {
 
 self.port.on("save-win", function(tabs) {
     if (tabs) {
+        var title;
+
         if (ENV == "tab") {
-            switchEnv();
             tabs = getSelectedTabs();
+            switchEnv();
         }
         handleWarnings();
 
         // if (SAVED) {} else {}
 
-        var list = document.getElementById("list");
+        var list = document.getElementById("winlist");
 
         var item = addWindow(tabs);
 
@@ -119,7 +122,21 @@ self.port.on("save-win", function(tabs) {
 
         item.firstChild.childNodes[2].appendChild(form);
 
-        list.insertBefore(item, template.nextSibling);
+        list.insertBefore(item, list.firstChild.nextSibling);
+
+        var form = document.getElementById("form");
+        if (form) {
+            handleSubmit = function(event) {
+                var form = document.getElementById("form");
+                if (form) {
+                    title = document.getElementById("title").value;
+                    form.parentNode.removeChild(form);
+                    item.firstChild.childNodes[2].textContent = title;
+                    self.port.emit("title-entered", [title, tabs]);
+                }
+            }
+            form.addEventListener("submit", handleSubmit);
+        }
 
         item.firstChild.childNodes[3].addEventListener("click", function(event) {
             handleWarnings();
@@ -133,20 +150,6 @@ self.port.on("save-win", function(tabs) {
             self.port.emit("open-clicked", [true, tabs]);
             event.stopPropagation();
         });
-
-        var form = document.getElementById("form");
-        if (form) {
-            handleSubmit = function(event) {
-                var form = document.getElementById("form");
-                if (form) {
-                    var title = document.getElementById("title").value;
-                    form.parentNode.removeChild(form);
-                    item.firstChild.childNodes[2].textContent = title;
-                    self.port.emit("title-entered", [title, tabs]);
-                }
-            }
-            form.addEventListener("submit", handleSubmit);
-        }
     }
     else {
         if (!WARNING) {
@@ -164,7 +167,7 @@ self.port.on("show-tab", function(tab) {
     var title = tab[0];
     var url = tab[1];
 
-    var list = document.getElementById("list");
+    var list = document.getElementById("tablist");
 
     var template = document.getElementById("tab-item");
     var item = template.cloneNode(true);
@@ -189,7 +192,7 @@ self.port.on("show-win", function(win) {
     var title = win[0];
     var tabs = win[1];
 
-    var list = document.getElementById("list");
+    var list = document.getElementById("winlist");
 
     var item = addWindow(tabs);
     item.firstChild.childNodes[2].textContent = title;
@@ -253,7 +256,7 @@ function removeForm() {
 // item.className = "item flexbox-row";
 // item.href = url;
 // var link = document.createElement("div");
-// link.className = "link";
+// link.className = "win-link";
 // link.textContent = title;
 // item.appendChild(link);
 // var remove = document.createElement("div");
@@ -269,7 +272,7 @@ function addWindow(tabs) {
     for (var i=0; i<tabs.length; i++) {
         var tab = tabs[i];
         var child = document.createElement("li");
-        child.className = "link";
+        child.className = "win-link";
         child.href = tab[1];
         var opt = document.createElement("div");
         opt.className = "label";
@@ -394,10 +397,10 @@ function prepareList(item) {
 }
 
 function getSelectedTabs() {
-    // excludes text and comment nodes
-    var items = document.getElementById("list").children;
     var tabs = [];
     if (ENV == "tab") {
+        // excludes text and comment nodes
+        var items = document.getElementById("tablist").children;
         for (var i=0; i<items.length; i++) {
             var item = items[i];
             if (item.classList.contains("selected")) {
@@ -406,6 +409,7 @@ function getSelectedTabs() {
         }
     }
     else {
+        var items = document.getElementById("winlist").children;
         for (var i=1; i<items.length; i++) {
             var children = items[i].children;
             for (var j=1; j<children.length; j++) {

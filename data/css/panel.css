@@ -3,6 +3,8 @@
  */
 
 .tab-item {
+    justify-content: flex-start;
+
     cursor: pointer;
     background-color: #AFEEEE;
     margin: 5px;
@@ -22,12 +24,14 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
-.win,.link {
+.win,.win-link {
     justify-content: flex-start;
 
     background-color: #AFEEEE;
 }
-.link {
+.tab-link {
+    flex-grow: 1;
+
     padding: 10px;
 
     white-space: nowrap;
@@ -58,7 +62,7 @@
     text-align: center;
     margin-right: 5px;
 }
-.open {
+.open-win {
     flex-shrink: 0;
 
     border: 1px solid;
@@ -84,7 +88,7 @@
 .tab-item:hover,.win-item:hover,.win:hover,.link:hover {
     background-color: #00CC99;
 }
-.toggle-list:hover,.open:hover,.toggle-menu:hover {
+.toggle-list:hover,.open-win:hover,.toggle-menu:hover {
     background-color: #4682B4;
     border-color: #000000;
     color: #FFFFFF;
