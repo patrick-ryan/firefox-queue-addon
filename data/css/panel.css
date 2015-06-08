@@ -9,13 +9,30 @@
     background-color: #AFEEEE;
     margin: 5px;
 }
+.tab-link,.win-link {
+    flex-grow: 1;
+
+    padding: 5px 10px;
+}
+.tab-link > .url {
+    font-size: 14px;
+}
 .win-item {
     cursor: pointer;
     list-style: none;
     margin: 5px;
     padding-left: 0;
+    border-bottom: 1px solid;
 }
-.label {
+.win-item > div, .win-item > li {
+    border-bottom: 1px dotted;
+}
+.win,.win-link {
+    justify-content: flex-start;
+
+    background-color: #AFEEEE;
+}
+.win-label {
     flex-grow: 1;
 
     padding: 10px;
@@ -24,15 +41,22 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
-.win,.win-link {
-    justify-content: flex-start;
-
-    background-color: #AFEEEE;
+.win-link > .label {
+    padding: 0 40px;
+    font-size: 14px;
 }
-.tab-link {
-    flex-grow: 1;
-
-    padding: 10px;
+.win-link > .url {
+    padding: 0 40px 0 40px;
+    font-size: 12px;
+}
+.label {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+.url {
+    padding-top: 5px;
+    opacity: 0.5;
 
     white-space: nowrap;
     overflow-x: hidden;
@@ -85,7 +109,7 @@
     font-style: italic;
 }
 
-.tab-item:hover,.win-item:hover,.win:hover,.link:hover {
+.tab-item:hover,.win:hover,.win-link:hover {
     background-color: #00CC99;
 }
 .toggle-list:hover,.open-win:hover,.toggle-menu:hover {

@@ -173,8 +173,9 @@ self.port.on("show-tab", function(tab) {
     var item = template.cloneNode(true);
     item.removeAttribute("id");
     item.removeAttribute("style");
-    item.firstChild.textContent = title;
     item.href = url;
+    item.firstChild.firstChild.textContent = title;
+    item.firstChild.lastChild.textContent = "(" + url + ")";
 
     item.lastChild.addEventListener("click", function(event) {
         handleWarnings();
@@ -215,6 +216,7 @@ self.port.on("show-win", function(win) {
 
 function switchEnv() {
     if (ENV == "tab") {
+        self.port.emit("switch-env", "window");
         ENV = "window";
         document.getElementById("tab").className = "env-not-selected";
         document.getElementById("tabmenu").style.display = "none";
@@ -224,6 +226,7 @@ function switchEnv() {
         document.getElementById("winlist").style.display = "";
     }
     else {
+        self.port.emit("switch-env", "tab");
         ENV = "tab";
         document.getElementById("win").className = "env-not-selected";
         document.getElementById("winmenu").style.display = "none";
@@ -276,8 +279,12 @@ function addWindow(tabs) {
         child.href = tab[1];
         var opt = document.createElement("div");
         opt.className = "label";
-        opt.textContent = tab[0] + " (" + tab[1] + ")";
+        opt.textContent = tab[0];
         child.appendChild(opt);
+        var url = document.createElement("div");
+        url.className = "url";
+        url.textContent = "(" + tab[1] + ")";
+        child.appendChild(url);
         item.appendChild(child);
     }
     prepareList(item);
