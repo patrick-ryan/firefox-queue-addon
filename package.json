@@ -1,9 +1,10 @@
 {
   "name": "firefox-queue-addon",
   "title": "Tab Store",
-  "id": "jid1-z6c6AA8V87k27w",
+  "id": "jid1-z6c6AA8V87k27w@jetpack",
   "description": "An extension that stores tabs temporarily and within window groups",
   "author": "Patrick Ryan",
   "license": "MPL 2.0",
-  "version": "0.2"
+  "version": "0.2",
+  "main": "lib/main.js"
 }
