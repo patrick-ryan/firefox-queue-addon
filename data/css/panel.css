@@ -2,6 +2,52 @@
  * panel.css
  */
 
+/* flexbox */
+.flexbox-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row nowrap;
+}
+
+/* no selecting */
+div {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+/* heading */
+#heading ul.flexbox-row {
+  justify-content: space-between;
+}
+#heading li.flexbox-row {
+  justify-content: flex-start;
+}
+#heading li.flexbox-row > div:first-of-type {
+  border-right: none;
+}
+#heading .env-not-selected:hover {
+  opacity: 1;
+  background-color: #FFFFFF;
+}
+#heading .env-not-selected {
+  border-bottom: 2px solid blue;
+  opacity: 0.5;
+  background-color: #D3D3D3;
+}
+#heading .env-selected {
+  border-top: 2px solid blue;
+}
+
+/* stores */
 .tab-item {
     justify-content: flex-start;
 

@@ -3,7 +3,7 @@
  */
 
 var WARNING = false;
-var ENV = "tab"; // "window";
+var ENV = "tab"; // "win";
 var handleSubmit; // ugh.
 // var SAVED = false;
 
@@ -18,7 +18,7 @@ self.port.on("activate", function() {
     var tab = document.getElementById("tab");
     tab.addEventListener("click", function(event) {
         handleWarnings();
-        if (ENV == "window") {
+        if (ENV == "win") {
             switchEnv();
         }
     });
@@ -30,6 +30,22 @@ self.port.on("activate", function() {
             switchEnv();
         }
     });
+
+    var menu = document.getElementById("menu");
+    menu.addEventListener("click", function(event) {
+        var submenu = document.getElementById(ENV + "menu");
+        if (submenu.style.display == "block") {
+            submenu.style.display = "none";
+        }
+        else {
+            submenu.style.display = "block";
+        }
+    });
+
+    // var doc = document;
+    // doc.addEventListener("click", function(event) {
+    //     console.log(event.currentTarget);
+    // });
 
     // var autosave = document.getElementById("autosave");
     // autosave.addEventListener("click", function(event) {
@@ -94,14 +110,11 @@ self.port.on("activate", function() {
 
 self.port.on("save-win", function(tabs) {
     if (tabs) {
-        var title;
-
+        handleWarnings();
         if (ENV == "tab") {
             tabs = getSelectedTabs();
             switchEnv();
         }
-        handleWarnings();
-
         // if (SAVED) {} else {}
 
         var list = document.getElementById("winlist");
@@ -122,8 +135,9 @@ self.port.on("save-win", function(tabs) {
 
         item.firstChild.childNodes[2].appendChild(form);
 
-        list.insertBefore(item, list.firstChild.nextSibling);
+        list.insertBefore(item, list.firstChild.nextSibling.nextSibling);
 
+        var title;
         var form = document.getElementById("form");
         if (form) {
             handleSubmit = function(event) {
@@ -216,8 +230,8 @@ self.port.on("show-win", function(win) {
 
 function switchEnv() {
     if (ENV == "tab") {
-        self.port.emit("switch-env", "window");
-        ENV = "window";
+        self.port.emit("switch-env", "win");
+        ENV = "win";
         document.getElementById("tab").className = "env-not-selected";
         document.getElementById("tabmenu").style.display = "none";
         document.getElementById("tablist").style.display = "none";
@@ -238,6 +252,10 @@ function switchEnv() {
 }
 
 function handleWarnings() {
+    var submenu = document.getElementById(ENV + "menu");
+    if (submenu.style.display == "block") {
+        submenu.style.display = "none";
+    }
     if (WARNING) {
         document.body.removeChild(document.getElementById("warning"));
         WARNING = false;
@@ -294,7 +312,7 @@ function addWindow(tabs) {
 function selectLink(link) {
     link.addEventListener("click", function(event) {
         if (link.classList.contains("selected")) {
-            if (ENV == "window") {
+            if (ENV == "win") {
                 link.parentNode.firstChild.classList.remove("selected");
             }
             link.classList.remove("selected");
@@ -411,7 +429,7 @@ function getSelectedTabs() {
         for (var i=0; i<items.length; i++) {
             var item = items[i];
             if (item.classList.contains("selected")) {
-                tabs.push([item.firstChild.textContent, item.href]);
+                tabs.push([item.firstChild.firstChild.textContent, item.href]);
             }
         }
     }

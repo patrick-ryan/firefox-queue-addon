@@ -33,46 +33,12 @@
   padding: 0 35px;
 }
 
-.flexbox-row {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-flex-flow: row nowrap;
-}
-#cssmenu > .flexbox-row {
-  justify-content: space-between;
-}
-#cssmenu > ul .flexbox-row {
-  justify-content: flex-start;
-}
-#cssmenu > ul .flexbox-row div:first-of-type {
-  border-right: none;
-}
-#cssmenu > ul .flexbox-row .env-not-selected:hover {
-  opacity: 1;
-  background-color: #FFFFFF;
-}
-#cssmenu > ul .flexbox-row .env-not-selected {
-  border-bottom: 2px solid blue;
-  opacity: 0.5;
-  background-color: #D3D3D3;
-}
-#cssmenu > ul .flexbox-row .env-selected {
-  border-top: 2px solid blue;
-}
-
 #cssmenu .has-sub:hover > div {
   border-top: 2px solid green;
   border-bottom: 1px solid #5d5d5d;
 }
 #cssmenu .has-sub > div {
   border-bottom: 2px solid green;
-}
-#cssmenu .has-sub:hover ul {
-  display: block;
 }
 #cssmenu .has-sub ul {
   display: none;
