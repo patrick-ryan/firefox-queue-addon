@@ -4,47 +4,47 @@
 
 /* flexbox */
 .flexbox-row {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
 
-  -webkit-flex-flow: row nowrap;
+    -webkit-flex-flow: row nowrap;
 }
 
 /* no selecting */
 div {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* IE/Edge */
-  user-select: none;           /* non-prefixed version, currently
+    -webkit-touch-callout: none;  /* iOS Safari */
+    -webkit-user-select: none;    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;     /* Konqueror */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE/Edge */
+    user-select: none;            /* non-prefixed version, currently
                                   not supported by any browser */
 }
 
 /* heading */
 #heading ul.flexbox-row {
-  justify-content: space-between;
+    justify-content: space-between;
 }
 #heading li.flexbox-row {
-  justify-content: flex-start;
+    justify-content: flex-start;
 }
 #heading li.flexbox-row > div:first-of-type {
-  border-right: none;
+    border-right: none;
 }
 #heading .env-not-selected:hover {
-  opacity: 1;
-  background-color: #FFFFFF;
+    opacity: 1;
+    background-color: #FFFFFF;
 }
 #heading .env-not-selected {
-  border-bottom: 2px solid blue;
-  opacity: 0.5;
-  background-color: #D3D3D3;
+    border-bottom: 2px solid blue;
+    opacity: 0.5;
+    background-color: #D3D3D3;
 }
 #heading .env-selected {
-  border-top: 2px solid blue;
+    border-top: 2px solid blue;
 }
 
 /* stores */
@@ -78,14 +78,15 @@ div {
 
     background-color: #AFEEEE;
 }
+.win-label,.label,.url {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
 .win-label {
     flex-grow: 1;
 
     padding: 10px;
-
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
 }
 .win-link > .label {
     padding: 0 40px;
@@ -95,18 +96,9 @@ div {
     padding: 0 40px 0 40px;
     font-size: 12px;
 }
-.label {
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-}
 .url {
     padding-top: 5px;
-    opacity: 0.5;
-
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
+    color: rgba(0, 0, 0, 0.5);
 }
 .circle {
     border: 1px solid;
