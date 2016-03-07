@@ -12,12 +12,6 @@
   padding: 0;
   position: relative;
 }
-/*#cssmenu:after,
-#cssmenu ul:after {
-  content: '';
-  display: block;
-  clear: both;
-}*/
 #cssmenu ul {
   list-style: none;
 }
@@ -33,11 +27,11 @@
   padding: 0 35px;
 }
 
-#cssmenu .has-sub:hover > div {
+#cssmenu .has-sub > .menu-selected {
   border-top: 2px solid green;
   border-bottom: 1px solid #5d5d5d;
 }
-#cssmenu .has-sub > div {
+#cssmenu .has-sub > .menu-not-selected {
   border-bottom: 2px solid green;
 }
 #cssmenu .has-sub ul {

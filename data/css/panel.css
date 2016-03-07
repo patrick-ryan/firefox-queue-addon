@@ -46,60 +46,58 @@ div {
 #heading .env-selected {
     border-top: 2px solid blue;
 }
+.warning {
+    color: red;
+    font-style: italic;
+}
 
 /* stores */
-.tab-item {
-    justify-content: flex-start;
-
+#tablist {
+    list-style: none;
+}
+#tablist > li, #winlist > div {
     cursor: pointer;
-    background-color: #AFEEEE;
     margin: 5px;
 }
-.tab-link,.win-link {
+.tab-item,.win {
+    justify-content: flex-start;
+
+    background-color: #AFEEEE;
+}
+.tab-link,.win-label {
     flex-grow: 1;
 
     padding: 5px 10px;
 }
-.tab-link > .url {
-    font-size: 14px;
-}
-.win-item {
-    cursor: pointer;
-    list-style: none;
-    margin: 5px;
-    padding-left: 0;
-    border-bottom: 1px solid;
-}
-.win-item > div, .win-item > li {
-    border-bottom: 1px dotted;
-}
-.win,.win-link {
-    justify-content: flex-start;
-
-    background-color: #AFEEEE;
-}
-.win-label,.label,.url {
+.tab-link > div,.win-label {
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
 }
-.win-label {
-    flex-grow: 1;
-
-    padding: 10px;
-}
-.win-link > .label {
-    padding: 0 40px;
-    font-size: 14px;
-}
-.win-link > .url {
-    padding: 0 40px 0 40px;
+.tab-link > div:last-of-type {
     font-size: 12px;
-}
-.url {
     padding-top: 5px;
     color: rgba(0, 0, 0, 0.5);
 }
+.win-item {
+    list-style: none;
+    padding-left: 0;
+    border-bottom: 1px solid;
+}
+.win-item > li {
+    border-top: 1px dotted;
+}
+.win-item > li > div {
+    padding: 0 40px;
+}
+.selected {
+    background-color: #99CCCC;
+}
+.tab-item:hover,.win:hover {
+    background-color: #00CC99;
+}
+
+/* window buttons */
 .circle {
     border: 1px solid;
     border-radius: 50%;
@@ -133,24 +131,7 @@ div {
     margin-bottom: auto;
     margin-right: 5px;
 }
-.toggle-menu {
-    flex-shrink: 0;
-
-    text-align: center;
-    margin-right: 5px;
-}
-.selected {
-    background-color: #99CCCC;
-}
-.warning {
-    color: red;
-    font-style: italic;
-}
-
-.tab-item:hover,.win:hover,.win-link:hover {
-    background-color: #00CC99;
-}
-.toggle-list:hover,.open-win:hover,.toggle-menu:hover {
+.toggle-list:hover,.open-win:hover {
     background-color: #4682B4;
     border-color: #000000;
     color: #FFFFFF;

@@ -19,7 +19,7 @@
                   <div id="win" class="env-not-selected">Windows</div>
                 </li>
                 <li class='has-sub'>
-                  <div id ="menu">Menu</div>
+                  <div id ="menu" class="menu-not-selected">Menu</div>
                   <ul id="tabmenu">
                      <li><div id="bookmark">Bookmark</div></li>
                      <li><div id="opentab">Open</div></li>
@@ -38,11 +38,11 @@
     </div>
     <hr>
     <div id="tablist">
-        <div id="tab-item" class="tab-item flexbox-row" style="display: none;"><div class="tab-link"><div class="label"></div><div class="url"></div></div><div class="circle remove-tab">x</div></div>
+        <li id="tab-item" class="tab-item flexbox-row" style="display: none;"><div class="tab-link"><div></div><div></div></div><div class="circle remove-tab">x</div></li>
         <!-- tab queue stuff -->
     </div>
     <div id="winlist" style="display: none;">
-        <div id="win-item" class="win-item" style="display: none;"><div class="win flexbox-row"><div class="circle toggle-list">&plus;</div><div class="circle toggle-list">&minus;</div><div class="win-label"></div><li class="circle remove-win">&times;</li><li class="open-win">Open</li><div class="circle toggle-menu">&lt;</div><div class="circle toggle-menu">&gt;</div></div></div>
+        <div id="win-item" class="win-item" style="display: none;"><div class="win flexbox-row"><div class="circle toggle-list">&plus;</div><div class="circle toggle-list">&minus;</div><div class="win-label"></div><li class="circle remove-win">&times;</li><li class="open-win">Open</li><div class="circle toggle-list">&lt;</div><div class="circle toggle-list">&gt;</div></div></div>
         <!-- window queue stuff -->
     </div>
 </body>
